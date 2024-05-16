@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ch.hevs.isi","l":"MinecraftController"},{"p":"ch.hevs.isi.db","l":"TimeManager"},{"p":"ch.hevs.isi.utils","l":"Utility"}];updateSearchResults();

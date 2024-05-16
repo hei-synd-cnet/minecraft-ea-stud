@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ch.hevs.isi"},{"l":"ch.hevs.isi.db"},{"l":"ch.hevs.isi.utils"}];updateSearchResults();
