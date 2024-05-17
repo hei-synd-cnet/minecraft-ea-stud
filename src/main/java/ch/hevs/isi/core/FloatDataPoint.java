@@ -1,17 +1,17 @@
 package ch.hevs.isi.core;
 
-public class BooleanDataPoint extends DataPoint {
-    private boolean value;
+public class FloatDataPoint extends DataPoint {
+    private Float value;
 
-    public BooleanDataPoint(String label, boolean isOuput){
+    public FloatDataPoint(String label, boolean isOutput){
         super(label, isOutput);
     }
 
-    public void setValue(boolean value){
+    public void setValue(Float value){
         this.value = value;
     }
 
-    public boolean getValue(){
+    public Float getValue(){
         return value;
     }
 
