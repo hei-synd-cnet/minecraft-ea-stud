@@ -14,7 +14,7 @@ public abstract class DataPoint {
         dataPointMap.put(Label, this);
     }
     protected void update(boolean isNewValue){
-        this.isOutput = isNewValue;
+        //this.isOutput = isNewValue;
     }
 
     public static DataPoint getDataPointFromLabel(String Label) {
