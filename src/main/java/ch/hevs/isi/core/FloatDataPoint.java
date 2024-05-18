@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-public class FloatDataPoint extends DataPoint {
+class FloatDataPoint extends DataPoint {
     private Float value;
 
     public FloatDataPoint(String label, boolean isOutput){

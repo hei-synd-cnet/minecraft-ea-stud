@@ -1,8 +1,12 @@
 package ch.hevs.isi.core;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class DataPoint {
+    protected static Map<String, DataPoint> dataPointMap = new HashMap<String, DataPoint>();
+
     protected String label;
-    protected Boolean isOutput;
+    protected boolean isOutput;
     protected DataPoint(String label, boolean isOutput) {
         this.label = label;
         this.isOutput = isOutput;
@@ -11,7 +15,7 @@ public abstract class DataPoint {
 
     }
     public static DataPoint getDataPointFromLabel(String label) {
-        return
+        return dataPointMap.get(label);
     }
     public String getLabel() {
         return label;
