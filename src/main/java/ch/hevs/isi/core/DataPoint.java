@@ -3,10 +3,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class DataPoint {
-    protected static Map<String, DataPoint> dataPointMap = new HashMap<String, DataPoint>();
+    protected static Map<String, DataPoint> dataPointMap = new HashMap();
 
     protected String label;
     protected boolean isOutput;
+
+    //Constructeur de la classe DataPoint
     protected DataPoint(String label, boolean isOutput) {
         this.label = label;
         this.isOutput = isOutput;
