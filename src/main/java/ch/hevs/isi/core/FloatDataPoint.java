@@ -13,6 +13,7 @@ public class FloatDataPoint extends DataPoint{
 
     //Méthodes
     public void setValue(float value) {
+        this.value = value;
     }
     public float getValue() {
         return value;

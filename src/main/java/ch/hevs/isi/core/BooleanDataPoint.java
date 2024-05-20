@@ -13,6 +13,7 @@ public class BooleanDataPoint extends DataPoint {
 
     //Méthodes
     public void setValue(boolean value) {
+        this.value = value;
     }
     public boolean getValue() {
         return value;
