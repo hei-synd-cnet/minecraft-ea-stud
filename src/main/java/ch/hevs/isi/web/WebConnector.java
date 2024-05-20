@@ -11,7 +11,11 @@ public class WebConnector implements DataPointListener {
     // Private constructor
     private WebConnector() {};
 
+    //Méthodes
     public WebConnector getInstance (){
+        if (w_c == null) {
+            w_c = new WebConnector();
+        }
         return w_c;
     }
     public void initialize (String host, int port){

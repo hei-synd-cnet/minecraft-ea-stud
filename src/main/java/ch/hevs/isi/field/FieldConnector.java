@@ -5,14 +5,17 @@ import ch.hevs.isi.core.DataPointListener;
 
 public class FieldConnector implements DataPointListener {
 
-    //Attribut
+    //Attribut / instance
     private static FieldConnector f_c = null;
 
     // Private constructor
     private FieldConnector() {};
 
     //Méthodes
-    public FieldConnector getInstance(){
+    public FieldConnector getInstance() {
+        if (f_c == null) {
+            f_c = new FieldConnector();
+        }
         return f_c;
     }
     public void initialize (String host, int port){

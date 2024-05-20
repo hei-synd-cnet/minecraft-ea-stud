@@ -14,6 +14,9 @@ public class DataBaseConnector implements DataPointListener {
 
     //Méthodes
     public DataBaseConnector getInstance () {
+        if (db_c == null) {
+            db_c = new DataBaseConnector();
+        }
         return db_c;
     }
     public void initialize(String url){
