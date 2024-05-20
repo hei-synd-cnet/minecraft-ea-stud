@@ -18,6 +18,8 @@ public class DataPoint {
     }
 
     //Méthodes
+    public void update(boolean isNewValue){
+    }
     public String getLabel() {
         return label;
     }
