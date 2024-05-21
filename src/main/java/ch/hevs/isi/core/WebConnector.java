@@ -1,12 +1,17 @@
 package ch.hevs.isi.core;
 
 public class WebConnector {
-    private static WebConnector instance;
-    private WebConnector(){
+    // Private and unique instance as attribute
+    private static WebConnector instance = null;
+    private WebConnector(){}
 
-    }
+    // The static method getInstance() returns a reference to the singleton.
+    // It creates the single X_Connector object if it does not exist (lazy).
     public WebConnector getInstance(){
-        //A compléter
+        if (instance == null) {
+            instance = new WebConnector();
+        }
+        return instance;
     }
     public void initialize(String url){     //A compléter
 
