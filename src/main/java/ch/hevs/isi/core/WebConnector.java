@@ -3,6 +3,8 @@ package ch.hevs.isi.core;
 public class WebConnector {
     // Private and unique instance as attribute
     private static WebConnector instance = null;
+
+    // Private constructor
     private WebConnector(){}
 
     // The static method getInstance() returns a reference to the singleton.
