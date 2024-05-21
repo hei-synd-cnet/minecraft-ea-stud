@@ -1,5 +1,9 @@
 package ch.hevs.isi.core;
 
+/**
+ * The public class BooleanDataPoint extends the Datapoint class.
+ * This class works with boolean values.
+ */
 public class BooleanDataPoint extends DataPoint {
     private boolean value;
 

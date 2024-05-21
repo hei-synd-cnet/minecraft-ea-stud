@@ -1,5 +1,9 @@
 package ch.hevs.isi.core;
 
+/**
+ * The public class FlaotDataPoint extends the Datapoint class.
+ * This class works with float values.
+ */
 class FloatDataPoint extends DataPoint {
     private Float value;
 
