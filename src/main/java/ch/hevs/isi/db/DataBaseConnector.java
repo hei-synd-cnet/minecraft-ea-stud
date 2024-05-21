@@ -1,8 +1,9 @@
 package ch.hevs.isi.db;
 
 import ch.hevs.isi.core.DataPoint;
+import ch.hevs.isi.core.DataPointListener;
 
-public class DataBaseConnector {
+public class DataBaseConnector implements DataPointListener {
     private static DataBaseConnector datBaseCo = null;
     // Private constructor
     private DataBaseConnector() {};
@@ -19,5 +20,10 @@ public class DataBaseConnector {
     }
     private void pushToDataBase(DataPoint dp){
         System.out.println("PushToDatabase");
+    }
+
+    @Override
+    public void onNewValue(DataPoint dp) {
+        //
     }
 }

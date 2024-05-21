@@ -1,9 +1,10 @@
 package ch.hevs.isi.field;
 
 import ch.hevs.isi.core.DataPoint;
+import ch.hevs.isi.core.DataPointListener;
 import ch.hevs.isi.db.DataBaseConnector;
 
-public class FieldConnector {
+public class FieldConnector implements DataPointListener {
     private static FieldConnector fieldCo = null;
     // Private constructor
     private FieldConnector() {};
@@ -20,5 +21,10 @@ public class FieldConnector {
     }
     private void pushToField(DataPoint dp){
         System.out.println("PushToField");
+    }
+
+    @Override
+    public void onNewValue(DataPoint dp) {
+        //
     }
 }
