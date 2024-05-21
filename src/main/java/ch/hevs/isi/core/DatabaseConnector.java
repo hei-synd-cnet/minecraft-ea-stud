@@ -1,12 +1,27 @@
 package ch.hevs.isi.core;
 
 class DatabaseConnector {
-    private static DatabaseConnector instance;
-    private DatabaseConnector(){
+    /**
+     * This variable creates a unique instance, later taken as attribute
+     */
+    private static DatabaseConnector instance = null;
 
+    /**
+     * private constructor
+     */
+    private DatabaseConnector(){
     }
+
+    /**
+     * The static method getInstance() returns a reference to the singleton.
+     * It creates the single X_Connector object if it does not exist (lazy).
+     * @return : the only instance of the DatabaseConnector
+     */
     public DatabaseConnector getInstance(){
-        //A compléter
+        if (instance == null) {
+            instance = new DatabaseConnector();
+        }
+        return instance;
     }
     public void initialize(String url){     //A compléter
 
