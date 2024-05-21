@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-public class WebConnector {
+public class WebConnector implements DataPointListener {
     // Private and unique instance as attribute
     private static WebConnector instance = null;
 
@@ -20,5 +20,10 @@ public class WebConnector {
     }
     private void pushToWeb(DataPoint dp){
         System.out.println("Pushing to Web: " + dp);
+    }
+
+    @Override
+    public void onNewValue(DataPoint dp) {
+
     }
 }

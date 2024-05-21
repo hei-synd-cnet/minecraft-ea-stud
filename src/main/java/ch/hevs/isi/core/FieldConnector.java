@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-class FieldConnector {
+class FieldConnector implements DataPointListener {
     // Private and unique instance as attribute
     private static FieldConnector instance = null;
 
@@ -20,5 +20,10 @@ class FieldConnector {
     }
     private void pushToField(DataPoint dp){
         System.out.println("Pushing to Field: " + dp);
+    }
+
+    @Override
+    public void onNewValue(DataPoint dp) {
+
     }
 }
