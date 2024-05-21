@@ -4,7 +4,8 @@ public class FloatDataPoint extends DataPoint{
     private float value;
     public FloatDataPoint(String label, Boolean isOutput)
     {
-        DataPoint(label, isOutput);
+        super(label, isOutput);
+        update();
     }
 
     public float getValue() {
@@ -12,11 +13,19 @@ public class FloatDataPoint extends DataPoint{
     }
 
     public void setValue(float value) {
-        this.value = value;
+        if (this.value != value) {
+            this.value = value;
+            update();
+        }
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "FloatDataPoint{" +
+                "label='" + getLabel() + '\'' +
+                ", isOutput=" + isOutput() +
+                ", value=" + value +
+                '}';
     }
+
 }

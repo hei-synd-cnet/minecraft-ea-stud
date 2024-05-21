@@ -1,10 +1,11 @@
 package ch.hevs.isi.core;
 
-public class BooleanDataPoint extends DataPoint{
+public class BooleanDataPoint extends DataPoint {
     private boolean value;
-    public BooleanDataPoint(String label, Boolean isOutput)
-    {
-        DataPoint(label, isOutput);
+
+    public BooleanDataPoint(String label, Boolean isOutput) {
+        super(label, isOutput);
+        update();
     }
 
     public boolean getValue() {
@@ -12,11 +13,21 @@ public class BooleanDataPoint extends DataPoint{
     }
 
     public void setValue(boolean value) {
-        this.value = value;
+
+        if (this.value != value) {
+            this.value = value;
+            update();
+        }
+
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "BooleanDataPoint{" +
+                "label='" + getLabel() + '\'' +
+                ", isOutput=" + isOutput() +
+                ", value=" + value +
+                '}';
     }
+
 }

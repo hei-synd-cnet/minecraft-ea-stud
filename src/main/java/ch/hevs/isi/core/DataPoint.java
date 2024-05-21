@@ -1,22 +1,21 @@
 package ch.hevs.isi.core;
 import java.util.HashMap;
 import java.util.Map;
- abstract class DataPoint {
-     private Map<String, DataPoint> dataPointMap = new HashMap<>();
+import java.util.List;
+import java.util.ArrayList;
+ public abstract class DataPoint {
+     private static Map<String, DataPoint> dataPointMap = new HashMap<>();
      private String label;
      private Boolean isOutput;
+     private List<DataPointListener> listeners = new ArrayList<>();
 
-     protected void DataPoint(String label, Boolean isOutput) {
+     protected DataPoint(String label, Boolean isOutput) {
          this.label = label;
          this.isOutput = isOutput;
      }
 
-     protected void update(Boolean isNewValue){
-
-     }
-
      public DataPoint getDataPointMapFromLabel(String label) {
-         return this.dataPointMap.get(label);
+         return dataPointMap.get(label);
      }
 
      public String getLabel() {
@@ -25,5 +24,27 @@ import java.util.Map;
 
      public Boolean isOutput() {
          return isOutput;
+     }
+
+     // Méthode pour ajouter un DataPoint à la carte
+     public void addDataPoint(String label, DataPoint dataPoint) {
+         this.dataPointMap.put(label, dataPoint);
+     }
+
+     // Méthode pour ajouter un listener
+     public void addListener(DataPointListener listener) {
+         listeners.add(listener);
+     }
+
+     // Méthode pour supprimer un listener
+     public void removeListener(DataPointListener listener) {
+         listeners.remove(listener);
+     }
+
+     // Méthode pour notifier tous les listeners
+     protected void update() {
+         for (DataPointListener listener : listeners) {
+             listener.onNewValue(this);
+         }
      }
  }
