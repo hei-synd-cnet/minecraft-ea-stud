@@ -14,15 +14,16 @@ public class DatabaseConnector implements DataPointListener{
 
     /**
      * The static method getInstance() returns a reference to the singleton.
-     * It creates the single X_Connector object if it does not exist (lazy).
-     * @return : the only instance of the DatabaseConnector
+     * It creates the single DatabaseConnector object if it does not exist (lazy).
+     * @return the only instance of the DatabaseConnector
      */
-    public DatabaseConnector getInstance(){
+    public static DatabaseConnector getInstance(){
         if (instance == null) {
             instance = new DatabaseConnector();
         }
         return instance;
     }
+
     public void initialize(String url){     //A compléter
 
     }

@@ -1,15 +1,22 @@
 package ch.hevs.isi.core;
 
 public class FieldConnector implements DataPointListener {
-    // Private and unique instance as attribute
+    /**
+     * This variable creates a unique instance, later taken as attribute
+     */
     private static FieldConnector instance = null;
 
-    // Private constructor
+    /**
+     * private constructor
+     */
     private FieldConnector(){}
 
-    // The static method getInstance() returns a reference to the singleton.
-    // It creates the single X_Connector object if it does not exist (lazy).
-    public FieldConnector getInstance(){
+    /**
+     * The static method getInstance() returns a reference to the singleton.
+     * It creates the single FieldConnector object if it does not exist (lazy).
+     * @return the only instance of the FieldConnector
+     */
+    public static FieldConnector getInstance(){
         if (instance == null) {
             instance = new FieldConnector();
         }
