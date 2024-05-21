@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-class DatabaseConnector implements DataPointListener{
+public class DatabaseConnector implements DataPointListener{
     /**
      * This variable creates a unique instance, later taken as attribute
      */

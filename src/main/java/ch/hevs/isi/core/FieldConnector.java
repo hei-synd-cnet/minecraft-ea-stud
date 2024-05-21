@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-class FieldConnector implements DataPointListener {
+public class FieldConnector implements DataPointListener {
     // Private and unique instance as attribute
     private static FieldConnector instance = null;
 
