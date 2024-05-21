@@ -1,4 +1,7 @@
-package ch.hevs.isi.core;
+package ch.hevs.isi.web;
+
+import ch.hevs.isi.core.DataPoint;
+import ch.hevs.isi.core.DataPointListener;
 
 public class WebConnector implements DataPointListener {
     /**
