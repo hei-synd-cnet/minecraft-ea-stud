@@ -12,7 +12,7 @@ public class FieldConnector implements DataPointListener {
     private FieldConnector() {};
 
     //Méthodes
-    public FieldConnector getInstance() {
+    public static FieldConnector getInstance() {
         if (f_c == null) {
             f_c = new FieldConnector();
         }

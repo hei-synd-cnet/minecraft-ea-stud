@@ -14,11 +14,14 @@ public class FloatDataPoint extends DataPoint{
     //Méthodes
     public void setValue(float value) {
         this.value = value;
+        // Notify all connectors
+        update(true);
     }
     public float getValue() {
         return value;
     }
     public String toString() {
-        return label;
+        return label + ", value: " + value;
     }
+
 }

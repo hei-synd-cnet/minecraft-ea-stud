@@ -10,10 +10,10 @@ public class DataBaseConnector implements DataPointListener {
     protected static DataBaseConnector db_c = null;
 
     // Private constructor
-    private DataBaseConnector() {};
+   private  DataBaseConnector() {};
 
     //Méthodes
-    public DataBaseConnector getInstance () {
+    public static DataBaseConnector getInstance () {
         if (db_c == null) {
             db_c = new DataBaseConnector();
         }

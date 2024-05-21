@@ -12,7 +12,7 @@ public class WebConnector implements DataPointListener {
     private WebConnector() {};
 
     //Méthodes
-    public WebConnector getInstance (){
+    public static WebConnector getInstance (){
         if (w_c == null) {
             w_c = new WebConnector();
         }
