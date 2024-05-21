@@ -26,4 +26,6 @@ public abstract class DataPoint {
         return isOutput;
     }
 
+
 }
+

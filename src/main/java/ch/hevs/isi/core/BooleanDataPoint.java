@@ -16,8 +16,15 @@ public class BooleanDataPoint extends DataPoint {
     }
 
     public String toString(){
-        return "label = " + label
-                + "isOutput = " + isOutput
+        return "label = " + label +"\n"
+                + "isOutput = " + isOutput +"\n"
                 + "value = " + value;
+    }
+
+    public static void main(String[] args) {
+
+        BooleanDataPoint d1 = new BooleanDataPoint("toto", false);
+        d1.setValue(true);
+        System.out.println(d1.toString());
     }
 }

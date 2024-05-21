@@ -1,6 +1,6 @@
 package ch.hevs.isi.core;
 
-class DatabaseConnector {
+class DatabaseConnector implements DataPointListener{
     /**
      * This variable creates a unique instance, later taken as attribute
      */
@@ -28,5 +28,10 @@ class DatabaseConnector {
     }
     private void pushToDatabase(DataPoint dp){
         System.out.println("Pushing to Database: " + dp);
+    }
+
+    @Override
+    public void onNewValue(DataPoint dp) {
+
     }
 }
