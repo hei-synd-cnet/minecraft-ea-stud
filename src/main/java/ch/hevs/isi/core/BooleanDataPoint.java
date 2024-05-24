@@ -17,6 +17,6 @@ public class BooleanDataPoint extends DataPoint{
     }
 
     public String toString(){
-        return "label =" + super.getLabel() + ", value =" + String.valueOf(value) + ", Is ouput = " + String.valueOf(super.isOutput());
+        return "label : " + super.getLabel() + ", value : " + String.valueOf(value) + ", Is ouput : " + String.valueOf(super.isOutput());
     }
 }
