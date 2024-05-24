@@ -13,6 +13,7 @@ public class DatabaseConnector implements DataPointListener {
      * Private constructor
      */
     private DatabaseConnector(){
+        DataPoint.subscribe(this);
     }
 
     /**

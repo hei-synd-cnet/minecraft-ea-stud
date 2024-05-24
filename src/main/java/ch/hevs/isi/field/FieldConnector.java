@@ -12,7 +12,9 @@ public class FieldConnector implements DataPointListener {
     /**
      * Private constructor
      */
-    private FieldConnector(){}
+    private FieldConnector(){
+        DataPoint.subscribe(this);
+    }
 
     /**
      * The static method getInstance() returns a reference to the singleton.

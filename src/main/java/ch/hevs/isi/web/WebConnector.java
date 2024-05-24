@@ -12,7 +12,9 @@ public class WebConnector implements DataPointListener {
     /**
      * Private constructor
      */
-    private WebConnector(){}
+    private WebConnector(){
+        DataPoint.subscribe(this);
+    }
 
     /**
      * The static method getInstance() returns a reference to the singleton.
