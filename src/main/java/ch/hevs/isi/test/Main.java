@@ -14,20 +14,28 @@ import javax.xml.crypto.Data;
  */
 public class Main {
     public static void main(String[] args){
-        DatabaseConnector.getInstance().initialize("www.test1.com");
-        FieldConnector.getInstance().initialize("www.test2.com");
-        WebConnector.getInstance().initialize("www.test3.com");
+        //DatabaseConnector.getInstance().initialize("test_bDp");
+        //FieldConnector.getInstance().initialize("www.test2.com");
+        //WebConnector.getInstance().initialize("www.test3.com");
 
-        FloatDataPoint d1 = new FloatDataPoint("toto", false);
-        d1.setValue(14f);
+        new FloatDataPoint("test_fDp", false);
+        new BooleanDataPoint("test_bDp", false);
 
-        BooleanDataPoint d2 = new BooleanDataPoint("tata", false);
-        d2.setValue(true);
+        BooleanDataPoint bDp = (BooleanDataPoint) DataPoint.getDataPointFromLabel("test_bDp");
+        if (bDp != null) {
+            bDp.setValue(true);
+            bDp.setValue(false);
+        } else {
+            System.err.println("bDp is null");
+        }
 
-        FloatDataPoint Test = (FloatDataPoint) DataPoint.getDataPointFromLabel("toto");
-        System.out.println(Test.getValue());
-        Test.setValue(23.48379f);
-        System.out.println(DataPoint.getDataPointFromLabel("toto").toString());
+        FloatDataPoint fDp = (FloatDataPoint) DataPoint.getDataPointFromLabel("test_fDp");
+        if (fDp != null) {
+            fDp.setValue(15f);
+            fDp.setValue(12f);
+        } else {
+            System.err.println("fDp is null");
+        }
     }
 
 }
