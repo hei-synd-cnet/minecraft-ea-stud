@@ -29,7 +29,6 @@ public class FloatDataPoint extends DataPoint{
      * @return
      */
     public String toString(){
-        return "Label : " + super.getLabel()+ ", isOutput : " + String.valueOf(super.isOutput())+", Value : "
-                + String.valueOf(value);
+        return String.valueOf(value);
     }
 }
