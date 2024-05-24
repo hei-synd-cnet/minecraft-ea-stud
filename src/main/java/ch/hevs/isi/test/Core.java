@@ -18,8 +18,8 @@ public class Core {
         new BooleanDataPoint("b_test", true);
 
         BooleanDataPoint bp = (BooleanDataPoint) DataPoint.getDataPointFromLabel("b_test");
-        bp.setValue(true);
         bp.setValue(false);
+        bp.setValue(true);
         FloatDataPoint fdp = (FloatDataPoint) DataPoint.getDataPointFromLabel("f_test");
         fdp.setValue(2.3f);
         fdp.setValue(3.4f);
