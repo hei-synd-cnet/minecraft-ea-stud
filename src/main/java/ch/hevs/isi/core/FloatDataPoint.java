@@ -14,8 +14,8 @@ class FloatDataPoint extends DataPoint {
 
     public void setValue(Float newValue){
         // Vérifier si la nouvelle valeur est différente de l'ancienne
-        if (this.value == null || !this.value.equals(newValue)) {
-            this.value = newValue;
+        if (value == null || !this.value.equals(newValue)) {
+            value = newValue;
             update(true);
         }
     }
