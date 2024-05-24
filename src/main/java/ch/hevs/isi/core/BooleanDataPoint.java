@@ -14,6 +14,7 @@ public class BooleanDataPoint extends DataPoint{
 
     public void setValue(Boolean value) {
         this.value = value;
+        update(true);
     }
 
     public String toString(){
