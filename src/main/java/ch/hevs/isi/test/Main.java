@@ -11,8 +11,24 @@ public class Main {
 
         // Create some dataPoint object
 
-        BooleanDataPoint b1 = new BooleanDataPoint("b1",true);
+        BooleanDataPoint b1 = new BooleanDataPoint("TOTO",true);
         FloatDataPoint f1 = new FloatDataPoint("f1",66.66f);
+
+        System.out.println(b1);
+        System.out.println(f1);
+
+        b1.setValue(false);
+        System.out.println(b1);
+        f1.setValue(7474.777f);
+        System.out.println(f1);
+
+        System.out.println(getDataPointFromLabel("TOTO"));
+        System.out.println(b1.getLabel());
+        System.out.println(b1.getValue());
+        System.out.println(f1.getValue());
+
+        f1.isOutput(true);
+        System.out.println(f1);
 
 
     }

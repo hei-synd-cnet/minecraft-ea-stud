@@ -23,4 +23,8 @@ public class FieldConnector implements DataPointListener {
     private void pushToField(DataPoint dp){
     }
 
+    @Override
+    public void oneNewValue(DataPoint dp) {
+        pushToField(dp);
+    }
 }

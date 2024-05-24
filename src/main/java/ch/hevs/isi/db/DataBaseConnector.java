@@ -6,6 +6,7 @@ import ch.hevs.isi.field.FieldConnector;
 
 public class DataBaseConnector implements DataPointListener {
 
+
     // Private and unique instance as attribute
     protected static DataBaseConnector db_c = null;
 
@@ -22,6 +23,11 @@ public class DataBaseConnector implements DataPointListener {
     public void initialize(String url){
     }
     private void pushToDatabase (DataPoint dp){
+    }
+
+    @Override
+    public void oneNewValue(DataPoint dp) {
+        pushToDatabase(dp);
     }
 }
 

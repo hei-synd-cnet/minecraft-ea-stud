@@ -22,4 +22,9 @@ public class WebConnector implements DataPointListener {
     }
     private void pushToWeb(DataPoint dp){
     }
+
+    @Override
+    public void oneNewValue(DataPoint dp) {
+        pushToWeb(dp);
+    }
 }

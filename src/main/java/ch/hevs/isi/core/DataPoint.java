@@ -24,9 +24,9 @@ public abstract class DataPoint {
     //Méthodes
     public void update(boolean isNewValue){
         // Notify all connectors
-        DataBaseConnector.getInstance().pushToDatabase(this);
-        FieldConnector.getInstance().pushToField(this);
-        WebConnector.getInstance().pushToWeb(this);
+        DataBaseConnector.getInstance().oneNewValue(this);
+        FieldConnector.getInstance().oneNewValue(this);
+        WebConnector.getInstance().oneNewValue(this);
     }
     public static DataPoint getDataPointFromLabel(String label) {
         return dataPointMap.get(label);
