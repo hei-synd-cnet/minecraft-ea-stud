@@ -3,7 +3,9 @@ package ch.hevs.isi.field;
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
 import ch.hevs.isi.db.DataBaseConnector;
-
+/**
+ * Class to link field
+ */
 public class FieldConnector implements DataPointListener {
     private static FieldConnector fieldCo = null;
     /**

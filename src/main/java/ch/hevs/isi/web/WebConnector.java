@@ -2,7 +2,9 @@ package ch.hevs.isi.web;
 
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
-
+/**
+ * Class to link webconnector
+ */
 public class WebConnector implements DataPointListener {
     private static WebConnector webCo = null;
     /**

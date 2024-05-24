@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * Class for the datapoint
+ */
 public abstract class DataPoint {
     /**
      * Hashmap of the all datapoint that we use

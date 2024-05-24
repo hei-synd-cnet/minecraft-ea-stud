@@ -1,7 +1,7 @@
 package ch.hevs.isi.core;
 
 /**
- * Class for the float data
+ * Class for the boolean data
  */
 public class BooleanDataPoint extends DataPoint{
     private Boolean value = null;
