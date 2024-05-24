@@ -14,11 +14,9 @@ public class BooleanDataPoint extends DataPoint {
 
     public void setValue(boolean newValue)
     {
-        if (this.value =! newValue) {
-            this.value = newValue;
-            update(true);
-        }
+        update(true);
     }
+
 
     public boolean getValue(){
 

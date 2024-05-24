@@ -13,10 +13,7 @@ class FloatDataPoint extends DataPoint {
     }
 
     public void setValue(Float newValue){
-        if (this.value == null || !this.value.equals(newValue)) {
-            this.value = newValue;
-            update(true);
-        }
+        update(true);
     }
 
     public Float getValue(){
