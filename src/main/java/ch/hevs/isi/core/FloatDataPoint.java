@@ -3,7 +3,7 @@ package ch.hevs.isi.core;
 /**
  * The FloatDataPoint class extends the DataPoint class and represents a data point that holds float values.
  */
-class FloatDataPoint extends DataPoint {
+public class FloatDataPoint extends DataPoint {
 
     // Field to store the float value
     private Float value = null;

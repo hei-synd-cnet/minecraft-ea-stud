@@ -1,6 +1,8 @@
-package ch.hevs.isi.core;
+package ch.hevs.isi.test;
 
-
+import ch.hevs.isi.core.BooleanDataPoint;
+import ch.hevs.isi.core.DataPoint;
+import ch.hevs.isi.core.FloatDataPoint;
 import ch.hevs.isi.db.DatabaseConnector;
 import ch.hevs.isi.field.FieldConnector;
 import ch.hevs.isi.web.WebConnector;
