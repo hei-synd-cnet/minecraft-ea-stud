@@ -4,13 +4,18 @@ public class FloatDataPoint extends DataPoint{
     private Float value;
 
     /**
-     *
-     * @param label
+     *Constructor of the label
+     * @param label Name of the datapoint
      * @param isOutput
      */
     public FloatDataPoint(String label, Boolean isOutput) {
     super(label, isOutput);
     }
+
+    /**
+     * Set the value of the datapoint
+     * @param valueToSet
+     */
     public void setValue(Float valueToSet){
         if (value != valueToSet)
         {
@@ -29,8 +34,7 @@ public class FloatDataPoint extends DataPoint{
     }
 
     /**
-     * Return the data point in String
-     * @return
+     * @return the value in string
      */
     public String toString(){
         return String.valueOf(value);
