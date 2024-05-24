@@ -10,7 +10,7 @@ public class FieldConnector implements DataPointListener {
     private static FieldConnector instance = null;
 
     /**
-     * private constructor
+     * Private constructor
      */
     private FieldConnector(){}
 

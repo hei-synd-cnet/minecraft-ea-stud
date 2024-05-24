@@ -1,4 +1,9 @@
 package ch.hevs.isi.core;
+import ch.hevs.isi.db.DatabaseConnector;
+import ch.hevs.isi.field.FieldConnector;
+import ch.hevs.isi.web.WebConnector;
+
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,13 +13,18 @@ public abstract class DataPoint {
     protected String label;
     protected boolean isOutput;
 
-    //Constructeur de la classe DataPoint
+    /**
+     * Protected constructor
+     */
     protected DataPoint(String label, boolean isOutput) {
         this.label = label;
         this.isOutput = isOutput;
+        dataPointMap.put(label, this);
     }
     protected void update(boolean isNewValue) {
-
+        WebConnector.getInstance().onNewValue(this);
+        DatabaseConnector.getInstance().onNewValue(this);
+        FieldConnector.getInstance().onNewValue(this);
     }
     public static DataPoint getDataPointFromLabel(String label) {
         return dataPointMap.get(label);

@@ -10,7 +10,7 @@ public class WebConnector implements DataPointListener {
     private static WebConnector instance = null;
 
     /**
-     * private constructor
+     * Private constructor
      */
     private WebConnector(){}
 
