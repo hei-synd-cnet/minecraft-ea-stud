@@ -25,6 +25,6 @@ public class FieldConnector implements DataPointListener {
 
     @Override
     public void onNewValue(DataPoint dp) {
-        //
+        pushToField(dp);
     }
 }

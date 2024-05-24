@@ -13,6 +13,7 @@ public class FloatDataPoint extends DataPoint{
     }
     void setValue(Float valueToSet){
         value = valueToSet;
+        update(true);
     }
 
     /**

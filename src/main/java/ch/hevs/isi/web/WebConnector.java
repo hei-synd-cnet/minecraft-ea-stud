@@ -18,11 +18,11 @@ public class WebConnector implements DataPointListener {
     }
 
     private void pushToWeb(DataPoint dp){
-        System.out.println("Push to web:" + dp);
+        System.out.println("Push to web");
     }
 
     @Override
     public void onNewValue(DataPoint dp) {
-
+        pushToWeb(dp);
     }
 }

@@ -24,6 +24,6 @@ public class DataBaseConnector implements DataPointListener {
 
     @Override
     public void onNewValue(DataPoint dp) {
-        //
+        pushToDataBase(dp);
     }
 }
