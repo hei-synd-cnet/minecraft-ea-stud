@@ -8,10 +8,12 @@ public class BooleanDataPoint extends DataPoint {
     private boolean value;
 
     public BooleanDataPoint(String label, boolean isOutput){
+
         super(label, isOutput);
     }
 
-    public void setValue(boolean newValue){
+    public void setValue(boolean newValue)
+    {
         if (this.value =! newValue) {
             this.value = newValue;
             update(true);
@@ -19,6 +21,7 @@ public class BooleanDataPoint extends DataPoint {
     }
 
     public boolean getValue(){
+
         return value;
     }
 

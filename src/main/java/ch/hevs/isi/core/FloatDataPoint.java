@@ -8,6 +8,7 @@ class FloatDataPoint extends DataPoint {
     private Float value;
 
     public FloatDataPoint(String label, boolean isOutput){
+
         super(label, isOutput);
     }
 
