@@ -11,7 +11,7 @@ public class FloatDataPoint extends DataPoint{
     public FloatDataPoint(String label, Boolean isOutput) {
     super(label, isOutput);
     }
-    void setValue(Float valueToSet){
+    public void setValue(Float valueToSet){
         if (value != valueToSet)
         {
             value = valueToSet;
@@ -24,7 +24,7 @@ public class FloatDataPoint extends DataPoint{
      * Get the float value of the datapoint
      * @return
      */
-    float getValue(){
+    public float getValue(){
         return value;
     }
 

@@ -3,7 +3,7 @@ package ch.hevs.isi.core;
 public class BooleanDataPoint extends DataPoint{
     private Boolean value = null;
 
-    protected BooleanDataPoint(String label, Boolean isOutput) {
+    public BooleanDataPoint(String label, Boolean isOutput) {
         super(label, isOutput);
     }
 
