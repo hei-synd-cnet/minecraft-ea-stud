@@ -1,8 +1,6 @@
 package ch.hevs.isi.core;
 
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 /**
  * The main created below is to test the creation of a datapoint.
  */
