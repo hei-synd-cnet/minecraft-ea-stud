@@ -61,7 +61,6 @@ public class test {
         } else if (retrievedDataPoint3 instanceof FloatDataPoint ) {
             ((FloatDataPoint) retrievedDataPoint3).setValue(0.2F);
         }
-fdfdf
 
     }
 
