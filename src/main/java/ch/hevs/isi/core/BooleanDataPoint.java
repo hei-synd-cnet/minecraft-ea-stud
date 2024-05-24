@@ -30,14 +30,4 @@ public class BooleanDataPoint extends DataPoint {
                 + "isOutput = " + isOutput +"\n"
                 + "value = " + value;
     }
-
-    /**
-     * The main created below is to test the creation of a datapoint.
-     */
-    public static void main(String[] args) {
-
-        BooleanDataPoint d1 = new BooleanDataPoint("toto", false);
-        d1.setValue(true);
-        System.out.println(d1.toString());
-    }
 }
