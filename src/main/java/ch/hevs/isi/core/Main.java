@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args){
         BooleanDataPoint d1 = new BooleanDataPoint("toto", false);
         d1.setValue(true);
-        System.out.println(d1.toString());
     }
 
 }
