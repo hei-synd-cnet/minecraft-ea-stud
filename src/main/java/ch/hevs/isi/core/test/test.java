@@ -47,6 +47,8 @@ public class test {
         dp3.setValue(3);
         dp3.setValue(3);
 
+        //test
+
         // Récupération d'un DataPoint à partir du label (ajouté au map pour test)
         dp3.addDataPoint("solar panel value : ", dp3);
         DataPoint retrievedDataPoint3 = dp3.getDataPointMapFromLabel("solar panel value : ");
