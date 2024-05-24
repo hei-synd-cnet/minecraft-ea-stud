@@ -7,14 +7,15 @@ import java.util.ArrayList;
      private static Map<String, DataPoint> dataPointMap = new HashMap<>();
      private String label;
      private Boolean isOutput;
-     private List<DataPointListener> listeners = new ArrayList<>();
+     private static List<DataPointListener> listeners = new ArrayList<>();
 
      protected DataPoint(String label, Boolean isOutput) {
          this.label = label;
          this.isOutput = isOutput;
+         addDataPoint(label,this);
      }
 
-     public DataPoint getDataPointMapFromLabel(String label) {
+     public static DataPoint getDataPointFromLabel(String label) {
          return dataPointMap.get(label);
      }
 
@@ -27,12 +28,10 @@ import java.util.ArrayList;
      }
 
      // Méthode pour ajouter un DataPoint à la carte
-     public void addDataPoint(String label, DataPoint dataPoint) {
-         this.dataPointMap.put(label, dataPoint);
-     }
+     private void addDataPoint(String label, DataPoint dataPoint) {this.dataPointMap.put(label, dataPoint);}
 
      // Méthode pour ajouter un listener
-     public void addListener(DataPointListener listener) {
+     public static void addListener(DataPointListener listener) {
          listeners.add(listener);
      }
 

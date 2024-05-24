@@ -11,10 +11,12 @@ import ch.hevs.isi.field.FieldConnector;
 
 public class test {
     public static void main(String[] args) {
-
+        //add singleton listener
+        DataPoint.addListener((DataPointListener) DataBaseConnector.getInstance());
+        DataPoint.addListener((DataPointListener) WebConnector.getInstance());
+        DataPoint.addListener((DataPointListener) FieldConnector.getInstance());
         // Création de BooleanDataPoint
         BooleanDataPoint dp1 = new BooleanDataPoint("DataPoint1", true);
-        dp1.addListener((DataPointListener) DataBaseConnector.getInstance());
 
         // Affichage des valeurs initiales
         System.out.println("Initial value of " + dp1.getLabel() + ": " + dp1.getValue());
@@ -23,37 +25,42 @@ public class test {
         dp1.setValue(true);
         dp1.setValue(false);
 
-        // Création d'un autre BooleanDataPoint
         BooleanDataPoint dp2 = new BooleanDataPoint("DataPoint2", false);
-        dp2.addListener((DataPointListener) WebConnector.getInstance());
 
         // Affichage des valeurs initiales
         System.out.println("Initial value of " + dp2.getLabel() + ": " + dp2.getValue());
 
-        // Modification de la valeur
         dp2.setValue(true);
+        dp2.setValue(false);
 
-        // Récupération d'un DataPoint à partir du label (ajouté au map pour test)
-        dp1.addDataPoint("PowerMAX : ", dp2);
-        DataPoint retrievedDataPoint = dp1.getDataPointMapFromLabel("PowerMAX : ");
+        DataPoint retrievedDataPoint = DataPoint.getDataPointFromLabel("DataPoint1");
         System.out.println("Retrieved DataPoint: " + retrievedDataPoint);
 
+        //Write on DataPoint
+        if(retrievedDataPoint instanceof BooleanDataPoint ){
+            ((BooleanDataPoint) retrievedDataPoint).setValue(true);
+        } else if (retrievedDataPoint instanceof FloatDataPoint ) {
+            ((FloatDataPoint) retrievedDataPoint).setValue(0.2F);
+        }
+
         // Création de flaotDataPoint
-        FloatDataPoint dp3 = new FloatDataPoint("DataPoint1", true);
-        dp3.addListener((DataPointListener) FieldConnector.getInstance());
+        FloatDataPoint dp3 = new FloatDataPoint("solar", true);
 
         // Modification de la valeur
         dp3.setValue(9);
         dp3.setValue(3);
         dp3.setValue(3);
 
-        //test
-
         // Récupération d'un DataPoint à partir du label (ajouté au map pour test)
-        dp3.addDataPoint("solar panel value : ", dp3);
-        DataPoint retrievedDataPoint3 = dp3.getDataPointMapFromLabel("solar panel value : ");
+        DataPoint retrievedDataPoint3 = DataPoint.getDataPointFromLabel("solar");
         System.out.println("Retrieved DataPoint solar panel: " + retrievedDataPoint3);
 
+        //Write on DataPoint
+        if(retrievedDataPoint3 instanceof BooleanDataPoint ){
+            ((BooleanDataPoint) retrievedDataPoint3).setValue(true);
+        } else if (retrievedDataPoint3 instanceof FloatDataPoint ) {
+            ((FloatDataPoint) retrievedDataPoint3).setValue(0.2F);
+        }
 
 
     }
