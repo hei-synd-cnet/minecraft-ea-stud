@@ -2,16 +2,16 @@ package ch.hevs.isi.core;
 
 public class BooleanDataPoint extends DataPoint {
 
-    //Attribut
+    /**Attributes*/
     protected boolean value;
 
-    //Constructeur
+    /**Constructor*/
     public BooleanDataPoint(String label, boolean value) {
         super(label);
         this.value = value;
     }
 
-    //Méthodes
+    /**Methods*/
     public void setValue(boolean value) {
         this.value = value;
         // Notify all connectors

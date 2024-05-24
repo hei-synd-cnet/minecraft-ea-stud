@@ -2,16 +2,16 @@ package ch.hevs.isi.core;
 
 public class FloatDataPoint extends DataPoint{
 
-    //Attribut
+    /**Attributes*/
     protected float value;
 
-    //Constructeur
+    /**Constructor*/
     public FloatDataPoint(String label, float value) {
         super(label);
         this.value = value;
     }
 
-    //Méthodes
+    /**Methods*/
     public void setValue(float value) {
         this.value = value;
         // Notify all connectors

@@ -5,13 +5,13 @@ import ch.hevs.isi.core.DataPointListener;
 
 public class FieldConnector implements DataPointListener {
 
-    //Attribut / instance
+    /**Attributes*/
     private static FieldConnector f_c = null;
 
-    // Private constructor
+    /**Private constructor*/
     private FieldConnector() {};
 
-    //Méthodes
+    /**Methods*/
     public static FieldConnector getInstance() {
         if (f_c == null) {
             f_c = new FieldConnector();
@@ -21,6 +21,7 @@ public class FieldConnector implements DataPointListener {
     public void initialize (String host, int port){
     }
     private void pushToField(DataPoint dp){
+        System.out.println("Push to Field");
     }
 
     @Override

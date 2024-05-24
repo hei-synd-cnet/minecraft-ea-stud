@@ -7,13 +7,13 @@ import ch.hevs.isi.field.FieldConnector;
 public class DataBaseConnector implements DataPointListener {
 
 
-    // Private and unique instance as attribute
+    /**Private and unique instance as attribute*/
     protected static DataBaseConnector db_c = null;
 
-    // Private constructor
+    /**Private Constructor*/
    private  DataBaseConnector() {};
 
-    //Méthodes
+    /**Methods*/
     public static DataBaseConnector getInstance () {
         if (db_c == null) {
             db_c = new DataBaseConnector();
@@ -23,6 +23,7 @@ public class DataBaseConnector implements DataPointListener {
     public void initialize(String url){
     }
     private void pushToDatabase (DataPoint dp){
+        System.out.println("Push to Data Base");
     }
 
     @Override
