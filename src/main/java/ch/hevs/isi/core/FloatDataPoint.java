@@ -5,7 +5,7 @@ package ch.hevs.isi.core;
  * This class works with float values.
  */
 class FloatDataPoint extends DataPoint {
-    private Float value;
+    private Float value = null;
 
     public FloatDataPoint(String label, boolean isOutput){
 

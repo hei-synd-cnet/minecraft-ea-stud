@@ -5,7 +5,7 @@ package ch.hevs.isi.core;
  * This class works with boolean values.
  */
 public class BooleanDataPoint extends DataPoint {
-    private boolean value;
+    private Boolean value = null;
 
     public BooleanDataPoint(String label, boolean isOutput){
 
@@ -13,11 +13,14 @@ public class BooleanDataPoint extends DataPoint {
     }
 
     public void setValue(boolean newValue) {
-        this.value = newValue;
-        update(true);
+        if ((value == null) || (value != newValue)) {
+            this.value = newValue;
+            update(true);
+        }
     }
 
     public boolean getValue(){
+
         return value;
     }
 
