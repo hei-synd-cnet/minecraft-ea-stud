@@ -34,6 +34,6 @@ public class WebConnector implements DataPointListener {
 
     @Override
     public void onNewValue(DataPoint dp) {
-
+        pushToWeb(dp);
     }
 }

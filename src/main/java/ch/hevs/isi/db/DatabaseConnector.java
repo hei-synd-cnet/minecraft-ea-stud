@@ -36,6 +36,6 @@ public class DatabaseConnector implements DataPointListener {
 
     @Override
     public void onNewValue(DataPoint dp) {
-
+        pushToDatabase(dp);
     }
 }
