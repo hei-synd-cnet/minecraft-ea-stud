@@ -17,9 +17,7 @@ public class BooleanDataPoint extends DataPoint {
         update(true);
     }
 
-
     public boolean getValue(){
-
         return value;
     }
 
