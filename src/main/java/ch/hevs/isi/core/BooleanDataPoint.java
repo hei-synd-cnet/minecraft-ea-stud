@@ -25,6 +25,9 @@ public class BooleanDataPoint extends DataPoint {
                 + "value = " + value;
     }
 
+    /**
+     * The main created below is to test the creation of a datapoint.
+     */
     public static void main(String[] args) {
 
         BooleanDataPoint d1 = new BooleanDataPoint("toto", false);
