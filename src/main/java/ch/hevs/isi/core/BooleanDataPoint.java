@@ -13,7 +13,7 @@ public class BooleanDataPoint extends DataPoint {
     }
 
     public void setValue(boolean newValue) {
-        if (this.value =! newValue) {
+        if ((newValue ^ this.value) == true) {
             this.value = newValue;
             update(true);
         }
