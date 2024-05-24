@@ -7,7 +7,9 @@ import ch.hevs.isi.db.DataBaseConnector;
 public class FieldConnector implements DataPointListener {
     private static FieldConnector fieldCo = null;
     // Private constructor
-    private FieldConnector() {};
+    private FieldConnector() {
+        DataPoint.subscribe(this);
+    };
     // The static method getInstance() returns a reference to the singleton.
 // It creates the single X_Connector object if it does not exist (lazy).
     public static FieldConnector getInstance() {

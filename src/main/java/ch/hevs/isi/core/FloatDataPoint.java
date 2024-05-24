@@ -12,8 +12,12 @@ public class FloatDataPoint extends DataPoint{
     super(label, isOutput);
     }
     void setValue(Float valueToSet){
-        value = valueToSet;
-        update(true);
+        if (value != valueToSet)
+        {
+            value = valueToSet;
+            update(true);
+        }
+
     }
 
     /**

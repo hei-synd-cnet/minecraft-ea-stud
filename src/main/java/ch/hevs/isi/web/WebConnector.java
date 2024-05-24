@@ -5,7 +5,9 @@ import ch.hevs.isi.core.DataPointListener;
 
 public class WebConnector implements DataPointListener {
     private static WebConnector webCo = null;
-    private WebConnector(){};
+    private WebConnector(){
+        DataPoint.subscribe(this);
+    };
 
     public static WebConnector getInstance(){
         if (webCo == null){

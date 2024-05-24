@@ -1,7 +1,7 @@
 package ch.hevs.isi.core;
 
 public class BooleanDataPoint extends DataPoint{
-    private Boolean value;
+    private Boolean value = null;
 
     protected BooleanDataPoint(String label, Boolean isOutput) {
         super(label, isOutput);
@@ -12,9 +12,11 @@ public class BooleanDataPoint extends DataPoint{
         return value;
     }
 
-    public void setValue(Boolean value) {
-        this.value = value;
-        update(true);
+    public void setValue(Boolean valueToSet) {
+        if(value != valueToSet){
+            value = valueToSet;
+            update(true);
+        }
     }
 
     public String toString(){
