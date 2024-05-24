@@ -1,16 +1,14 @@
-package ch.hevs.isi.db;
-
+package ch.hevs.isi.web;
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
+public class WebConnector implements DataPointListener{
+    private static WebConnector instance = null;
+    private WebConnector(){};
 
-public class DataBaseConnector implements DataPointListener {
-    private static DataBaseConnector instance = null;
-    private DataBaseConnector(){};
-
-    public static DataBaseConnector getInstance()
+    public static WebConnector getInstance()
     {
         if (instance == null){
-            instance = new DataBaseConnector();
+            instance = new WebConnector();
         }
         return instance;
     }
@@ -18,7 +16,7 @@ public class DataBaseConnector implements DataPointListener {
 
     //public void initialize(String url,...){}
     private void pushToDatabase(DataPoint dp) {
-        System.out.println("Push DB: " + dp);
+        System.out.println("Push Web: " + dp);
     }
 
     @Override

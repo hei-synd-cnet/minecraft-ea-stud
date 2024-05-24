@@ -1,16 +1,15 @@
-package ch.hevs.isi.db;
+package ch.hevs.isi.field;
 
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
+public class FieldConnector implements DataPointListener{
+    private static FieldConnector instance = null;
+    private FieldConnector(){};
 
-public class DataBaseConnector implements DataPointListener {
-    private static DataBaseConnector instance = null;
-    private DataBaseConnector(){};
-
-    public static DataBaseConnector getInstance()
+    public static FieldConnector getInstance()
     {
         if (instance == null){
-            instance = new DataBaseConnector();
+            instance = new FieldConnector();
         }
         return instance;
     }
@@ -18,7 +17,7 @@ public class DataBaseConnector implements DataPointListener {
 
     //public void initialize(String url,...){}
     private void pushToDatabase(DataPoint dp) {
-        System.out.println("Push DB: " + dp);
+        System.out.println("Push Field: " + dp);
     }
 
     @Override

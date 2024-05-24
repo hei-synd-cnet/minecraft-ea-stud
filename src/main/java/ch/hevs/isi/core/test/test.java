@@ -5,14 +5,16 @@ import ch.hevs.isi.core.DataPointListener;
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.FloatDataPoint;
 
+import ch.hevs.isi.db.DataBaseConnector;
+import ch.hevs.isi.web.WebConnector;
+import ch.hevs.isi.field.FieldConnector;
+
 public class test {
     public static void main(String[] args) {
-        // Création d'un listener
-        SimpleDataPointListener listener = new SimpleDataPointListener();
 
         // Création de BooleanDataPoint
         BooleanDataPoint dp1 = new BooleanDataPoint("DataPoint1", true);
-        dp1.addListener((DataPointListener) listener);
+        dp1.addListener((DataPointListener) DataBaseConnector.getInstance());
 
         // Affichage des valeurs initiales
         System.out.println("Initial value of " + dp1.getLabel() + ": " + dp1.getValue());
@@ -23,7 +25,7 @@ public class test {
 
         // Création d'un autre BooleanDataPoint
         BooleanDataPoint dp2 = new BooleanDataPoint("DataPoint2", false);
-        dp2.addListener((DataPointListener) listener);
+        dp2.addListener((DataPointListener) WebConnector.getInstance());
 
         // Affichage des valeurs initiales
         System.out.println("Initial value of " + dp2.getLabel() + ": " + dp2.getValue());
@@ -38,7 +40,7 @@ public class test {
 
         // Création de flaotDataPoint
         FloatDataPoint dp3 = new FloatDataPoint("DataPoint1", true);
-        dp3.addListener((DataPointListener) listener);
+        dp3.addListener((DataPointListener) FieldConnector.getInstance());
 
         // Modification de la valeur
         dp3.setValue(9);
@@ -49,6 +51,9 @@ public class test {
         dp3.addDataPoint("solar panel value : ", dp3);
         DataPoint retrievedDataPoint3 = dp3.getDataPointMapFromLabel("solar panel value : ");
         System.out.println("Retrieved DataPoint solar panel: " + retrievedDataPoint3);
+
+
+
     }
 
 
