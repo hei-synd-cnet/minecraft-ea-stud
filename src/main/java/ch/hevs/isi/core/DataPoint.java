@@ -19,7 +19,6 @@ public abstract class DataPoint {
         this.label = label;
         dataPointMap.put(label, this); /**Adds the DataPoint to the Map with its label as the key*/
         this.isOutput = false; /**Initializes isOutput to false by default*/
-        toto
     }
 
     /**Methods*/
