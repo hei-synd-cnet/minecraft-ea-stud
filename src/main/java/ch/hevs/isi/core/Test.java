@@ -7,8 +7,6 @@ import ch.hevs.isi.web.WebConnector;
 public class Test {
 
     public static void main(String[] args){
-        DataBaseConnector.getInstance().initialize("123.12.23.45",123);
-        FieldConnector.getInstance().initialize("123.12.23.45",123);
         WebConnector.getInstance().initialize("123.12.23.45",123);
         BooleanDataPoint bdp = new BooleanDataPoint("AaA", false);
         FloatDataPoint fdap = new FloatDataPoint("PowerSolar", false);

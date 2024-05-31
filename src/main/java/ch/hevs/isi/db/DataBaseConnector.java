@@ -3,12 +3,22 @@ package ch.hevs.isi.db;
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 /**
  * Class to link field and dataBase
  */
 public class DataBaseConnector implements DataPointListener {
     private static DataBaseConnector datBaseCo = null;
+    private String dbProtocol;
+    private String dbHostName;
+    private String dbBucket;
+    private String dbToken;
 
     /**
      * Constructor
@@ -32,12 +42,18 @@ public class DataBaseConnector implements DataPointListener {
     }
 
     /**
-     * initialize the connector
-     * @param host
-     * @param port
+     *
+     * @param dbProtocol
+     * @param dbHostName
+     * @param dbBucket
+     * @param dbToken
      */
-    public void initialize (String host,int port){
-
+    public void initialize (String dbProtocol, String dbHostName, String dbBucket, String dbToken){
+        this.dbProtocol=dbProtocol;
+        this.dbHostName=dbHostName;
+        this.dbBucket=dbBucket;
+        this.dbToken=dbToken; //n2hnjQ12N6zSUaEMdJhZmLq_ss7wY7bTnNcfwyek91OAGQ7HNvIj5FGfNZTxZXJoDXLcCG2xcMf-zxPCoQj9sA==
+// host, token,
     }
 
     /**
@@ -45,7 +61,37 @@ public class DataBaseConnector implements DataPointListener {
      * @param dp
      */
     private void pushToDataBase(DataPoint dp){
-        System.out.println("PushToDatabase");
+        URL url = null;
+        String msg= "Minecraft " + dp.getLabel() +"=" + dp.toString(); //Message for
+        try {
+            url = new URL(dbProtocol+"://"+dbHostName+"/api/v2/write?org="+dbBucket+"&bucket="+dbBucket);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty ("Authorization", "Token " + dbToken);
+            connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+            writer.write(msg);
+            writer.flush();
+            int responseCode = connection.getResponseCode();
+            if (responseCode == 204){
+                String response = connection.getResponseMessage();
+                System.out.println(response);
+
+            }
+            connection.disconnect();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+
+        }
+
+
+
+
+
+
     }
 
     /**

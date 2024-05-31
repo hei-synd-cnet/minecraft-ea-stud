@@ -28,7 +28,7 @@ public class BooleanDataPoint extends DataPoint{
     public void setValue(Boolean valueToSet) {
         if(value != valueToSet){
             value = valueToSet;
-            update(true);
+            update(true, this);
         }
     }
 
@@ -36,6 +36,10 @@ public class BooleanDataPoint extends DataPoint{
      * @return value of datapoint in String
      */
     public String toString(){
-        return String.valueOf(value);
+        if (value){
+            return "1";
+        }else{
+            return "0";
+        }
     }
 }

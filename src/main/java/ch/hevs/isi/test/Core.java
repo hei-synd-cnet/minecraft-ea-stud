@@ -11,7 +11,6 @@ import javax.xml.crypto.Data;
 
 public class Core {
     public static void main(String[] args){
-        DataBaseConnector.getInstance().initialize("123.12.23.45",123);
         FieldConnector.getInstance().initialize("123.12.23.45",123);
         WebConnector.getInstance().initialize("123.12.23.45",123);
         new FloatDataPoint("f_test", false);

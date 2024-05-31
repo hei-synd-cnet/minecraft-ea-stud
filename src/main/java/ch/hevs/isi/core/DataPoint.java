@@ -47,9 +47,9 @@ public abstract class DataPoint {
      * Send the new value to each new listener
      * @param isNewValue
      */
-    protected void update(boolean isNewValue){
+    protected void update(boolean isNewValue, DataPoint dp){
         for(DataPointListener listener : dpListener){
-            listener.onNewValue(this);
+            listener.onNewValue(dp);
         }
     }
 

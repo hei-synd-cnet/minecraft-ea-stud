@@ -22,7 +22,7 @@ public class FloatDataPoint extends DataPoint{
         if (value != valueToSet)
         {
             value = valueToSet;
-            update(true);
+            update(true, this);
         }
 
     }
