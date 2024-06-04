@@ -6,7 +6,6 @@ import ch.hevs.isi.core.DataPointListener;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 
@@ -53,7 +52,6 @@ public class DataBaseConnector implements DataPointListener {
         this.dbHostName=dbHostName;
         this.dbBucket=dbBucket;
         this.dbToken=dbToken; //n2hnjQ12N6zSUaEMdJhZmLq_ss7wY7bTnNcfwyek91OAGQ7HNvIj5FGfNZTxZXJoDXLcCG2xcMf-zxPCoQj9sA==
-// host, token,
     }
 
     /**
@@ -61,10 +59,9 @@ public class DataBaseConnector implements DataPointListener {
      * @param dp
      */
     private void pushToDataBase(DataPoint dp){
-        URL url = null;
         String msg= "Minecraft " + dp.getLabel() +"=" + dp.toString(); //Message for
         try {
-            url = new URL(dbProtocol+"://"+dbHostName+"/api/v2/write?org="+dbBucket+"&bucket="+dbBucket);
+            URL url = new URL(dbProtocol+"://"+dbHostName+"/api/v2/write?org="+dbBucket+"&bucket="+dbBucket);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty ("Authorization", "Token " + dbToken);
             connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");

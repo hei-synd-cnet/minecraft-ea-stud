@@ -1,8 +1,13 @@
 package ch.hevs.isi;
 
+import ch.hevs.isi.core.BooleanDataPoint;
+import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.FloatDataPoint;
 import ch.hevs.isi.db.DataBaseConnector;
 import ch.hevs.isi.utils.Utility;
+
+import java.io.File;
+import java.util.Scanner;
 
 public class MinecraftController {
 
@@ -39,6 +44,7 @@ public class MinecraftController {
 
         String modbusTcpHost    = "localhost";
         int modbusTcpPort       = 1502;
+
 
         // Check the number of arguments and show usage message if the number does not match.
         String[] parameters = null;
@@ -77,8 +83,41 @@ public class MinecraftController {
         // Start coding here ...
         DataBaseConnector dbConnector = DataBaseConnector.getInstance();
         dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
-        FloatDataPoint fdp = new FloatDataPoint("GRID_U_FLOAT",false);
+        String csvDpName = "C:\\Users\\vivia\\Documents\\HES\\Projet_Minecraft\\minecraft-ea-marquespittet\\src\\main\\java\\ch\\hevs\\isi\\ModbusMap.csv";
+        File csvDP = new File(csvDpName);
+        try{
+            Scanner sc = new Scanner(csvDP);
+            Boolean firstLine = true;
+            while (sc.hasNext()){
+                String line = sc.nextLine();
+                String[] splitLine = line.split(";");
+                if (!firstLine){
+                    String label = splitLine[0];
+                    String type = splitLine[1];
+                    Boolean isOuput = (splitLine[3]=="Y"? true : false);
+                    int modbusaddress = Integer.parseInt(splitLine[4]);
+                    int range = Integer.parseInt(splitLine[5]);
+                    int offset = Integer.parseInt(splitLine[6]);
+                    if (type.equals("F")){
+                        new FloatDataPoint(label,isOuput);
+                    }else if (type.equals("B")){
+                        new BooleanDataPoint(label,isOuput);
+                    }
+
+
+                }else{
+                    firstLine = !firstLine;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        FloatDataPoint fdp = (FloatDataPoint) DataPoint.getDataPointFromLabel("GRID_U_FLOAT");
         fdp.setValue(800f);
+        fdp = (FloatDataPoint) DataPoint.getDataPointFromLabel("BATT_P_FLOAT");
+        fdp.setValue(2000f);
+
+
 
     }
 }
