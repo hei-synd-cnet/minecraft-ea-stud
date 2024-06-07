@@ -13,7 +13,7 @@ import java.net.URL;
 public class DataBaseConnector implements DataPointListener {
 
 
-    /**Private and unique instance as attribute*/
+    /**Private instance as attribute*/
     protected static DataBaseConnector db_c = null;
     private String dbProtocol;
     private String dbHostName;

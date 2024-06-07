@@ -3,7 +3,6 @@ package ch.hevs.isi.core;
 import ch.hevs.isi.db.DataBaseConnector;
 import ch.hevs.isi.field.FieldConnector;
 import ch.hevs.isi.web.WebConnector;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -78,8 +78,7 @@ public class MinecraftController {
         dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
         FloatDataPoint fdp = new FloatDataPoint("GRID_U_FLOAT",600f);
         fdp.isOutput(true);
-        fdp.setValue(500f);
-        fdp.setValue(100f);
+        fdp.setValue(20000f);
 
     }
 }
