@@ -33,8 +33,8 @@ public class FloatRegister extends ModbusRegister {
     @Override
     public void read() {
         ModbusAccessor modbus = ModbusAccessor.getInstance("10.23.4.213", 1502, 1);
-        ModbusRegister addr =
-        modbus.writeFloat(, fdp.getValue());
+        ModbusRegister addr = null;
+        modbus.writeFloat(addr.getAddress(), fdp.getValue());
         modbus.disconnect();
 
     }
@@ -42,7 +42,8 @@ public class FloatRegister extends ModbusRegister {
     @Override
     public void write() {
         ModbusAccessor modbus = ModbusAccessor.getInstance("10.23.4.213", 1502, 1);
-        modbus.writeFloat(, fdp.getValue());
+        ModbusRegister addr = null;
+        modbus.writeFloat(addr.getAddress(), fdp.getValue());
         modbus.disconnect();
     }
 }

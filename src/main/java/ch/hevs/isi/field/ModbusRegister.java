@@ -23,7 +23,11 @@ public abstract class ModbusRegister {
         return address;
     }
 
-
+    public static void poll() {
+        for (ModbusRegister register : registerMap.values()) {
+            register.read();
+        }
+    }
     public abstract void   read() ;
 
     public abstract void write() ;
