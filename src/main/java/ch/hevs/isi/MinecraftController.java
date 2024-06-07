@@ -1,5 +1,7 @@
 package ch.hevs.isi;
 
+import ch.hevs.isi.core.FloatDataPoint;
+import ch.hevs.isi.db.DataBaseConnector;
 import ch.hevs.isi.utils.Utility;
 
 public class MinecraftController {
@@ -31,10 +33,9 @@ public class MinecraftController {
         // ------------------------------------- DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
         String dbProtocol       = "http";
         String dbHostName       = "localhost";
-        String dbName           = "labo";
-        String dbUserName       = "root";
+        String dbBucket         = "labo";
+        String dbToken          = "root";
         String dbPassword       = "root";
-
         String modbusTcpHost    = "localhost";
         int modbusTcpPort       = 1502;
 
@@ -53,9 +54,9 @@ public class MinecraftController {
 
             dbProtocol    = dbParams[0];
             dbHostName    = dbParams[1];
-            dbName        = parameters[1];
-            dbUserName    = parameters[2];
-            dbPassword    = Utility.md5sum(dbUserName);
+            dbBucket        = parameters[1];
+            dbToken    = parameters[2];
+            dbPassword    = Utility.md5sum(dbToken);
 
             // Decode parameters for Modbus TCP
             modbusTcpHost = parameters[3];
@@ -73,6 +74,11 @@ public class MinecraftController {
         // ------------------------------------ /DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
 
         // Start coding here ...
+        DataBaseConnector dbConnector = DataBaseConnector.getInstance();
+        dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
+        FloatDataPoint fdp = new FloatDataPoint("GRID_U_FLOAT",600f);
+        fdp.isOutput(true);
+        fdp.setValue(20000f);
 
     }
 }

@@ -21,7 +21,8 @@ public class FloatDataPoint extends DataPoint{
         return value;
     }
     public String toString() {
-        return label + ", value: " + value;
+        return String.valueOf(value);
     }
+
 
 }
