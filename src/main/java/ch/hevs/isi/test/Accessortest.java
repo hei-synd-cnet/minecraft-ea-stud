@@ -13,7 +13,7 @@ public class Accessortest {
         ModbusAccessor.create();
         ModbusAccessor.connect("localhost",1502);
         System.out.println(ModbusAccessor.readBoolean(609));
-        System.out.println(ModbusAccessor.readFloat(61));
+        System.out.println(ModbusAccessor.readFloat(209));
         ModbusAccessor.writeBoolean(401,true);
         ModbusAccessor.writeFloat(209,0.3f);
         System.out.println(ModbusAccessor.readBoolean(609));

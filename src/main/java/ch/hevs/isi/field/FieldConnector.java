@@ -2,6 +2,7 @@ package ch.hevs.isi.field;
 
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
+import ch.hevs.isi.field.ModbusRegister;
 
 /**
  * The FieldConnector class is responsible for connecting to a field and receiving data points from it.
@@ -13,6 +14,7 @@ public class FieldConnector implements DataPointListener {
      * This variable creates a unique instance, later taken as attribute
      */
     private static FieldConnector instance = null;
+    private ModbusRegister register;
 
     /**
      * Private constructor to prevent external instantiation.
@@ -36,10 +38,12 @@ public class FieldConnector implements DataPointListener {
 
     /**
      * Method to initialize the connection to the field.
-     * @param url The URL of the field.
+     * @param ipAdress The URL of the field.
+     * @param port ...
      */
-    public void initialize(String url){
-        // To be implemented
+    public static void initialize(String ipAdress, int port){
+        ModbusAccessor.create();
+        ModbusAccessor.connect(ipAdress,port);
     }
 
     /**
@@ -47,7 +51,9 @@ public class FieldConnector implements DataPointListener {
      * @param dp The data point to be pushed.
      */
     private void pushToField(DataPoint dp){
+
         System.out.println("Pushing to Field: " + dp);
+
     }
 
     /**
@@ -57,6 +63,11 @@ public class FieldConnector implements DataPointListener {
      */
     @Override
     public void onNewValue(DataPoint dp) {
+        register = ModbusRegister.getRegisterFromDataPoint(dp);
+        System.out.println(register);
+        if (register != null) {
+            register.write();
+        }
         pushToField(dp);
     }
 }
