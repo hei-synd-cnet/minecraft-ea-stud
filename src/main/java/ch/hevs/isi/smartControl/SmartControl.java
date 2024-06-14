@@ -98,15 +98,7 @@ public class SmartControl extends TimerTask {
 
 
         /**Battery Management*/
-        if (battery.getValue() < 0.1f) {
-            solarSwitch.setValue(true); //Alumer pannau solaire
-            windSwitch.setValue(true); //Alumer éolienne
-            factorySetPoint.setValue(0.0f); //Eteindre Usine
-        } else if (battery.getValue() > 0.9f) {
-            solarSwitch.setValue(false);
-            windSwitch.setValue(false);
-            factorySetPoint.setValue(1.0f);
-        }
+
 
     }
 }
