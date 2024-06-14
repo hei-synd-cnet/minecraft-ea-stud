@@ -6,9 +6,9 @@ public class BooleanDataPoint extends DataPoint {
     protected boolean value;
 
     /**Constructor*/
-    public BooleanDataPoint(String label, boolean value) {
+    public BooleanDataPoint(String label, boolean isOutput) {
         super(label);
-        this.value = value;
+        this.isOutput = isOutput;
     }
 
     /**Methods*/

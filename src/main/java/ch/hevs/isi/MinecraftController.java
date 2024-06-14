@@ -1,8 +1,15 @@
 package ch.hevs.isi;
 
+import ch.hevs.isi.core.CSVParser;
 import ch.hevs.isi.core.FloatDataPoint;
 import ch.hevs.isi.db.DataBaseConnector;
+import ch.hevs.isi.field.FieldConnector;
+import ch.hevs.isi.field.ModbusAccessor;
+import ch.hevs.isi.field.PollTask;
+import ch.hevs.isi.smartControl.SmartControl;
 import ch.hevs.isi.utils.Utility;
+
+import java.util.Timer;
 
 public class MinecraftController {
 
@@ -73,12 +80,24 @@ public class MinecraftController {
 
         // ------------------------------------ /DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
 
-        // Start coding here ...
+        // Database Connector
         DataBaseConnector dbConnector = DataBaseConnector.getInstance();
         dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
-        FloatDataPoint fdp = new FloatDataPoint("GRID_U_FLOAT",600f);
-        fdp.isOutput(true);
-        fdp.setValue(20000f);
 
+        // Field Connector
+        FieldConnector fieldConnector = FieldConnector.getInstance();
+        fieldConnector.initialize(modbusTcpHost, modbusTcpPort);
+        CSVParser.creatDatapoint();
+
+        /**Pooling management*/
+        Timer pollTimer = new Timer();
+        pollTimer.scheduleAtFixedRate(new PollTask(), 500, 2000);
+
+        // Start here my smart controller
+        pollTimer.scheduleAtFixedRate(new SmartControl(), 5000, 2000);
+
+
+//        new FloatDataPoint("GRID_U_FLOAT",true).setValue(800.5f);
+//        new FloatDataPoint("SOLAR_PANEL", true).setValue(0.5f);
     }
 }

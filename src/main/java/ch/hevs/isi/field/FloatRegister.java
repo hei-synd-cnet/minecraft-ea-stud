@@ -2,31 +2,34 @@ package ch.hevs.isi.field;
 
 import ch.hevs.isi.core.FloatDataPoint;
 
+import java.util.Objects;
+
 public class FloatRegister extends ModbusRegister {
 
-    private float value;
     private FloatDataPoint fdp;
     private int range;
     private int offset;
 
-    public FloatRegister(FloatDataPoint fdp, float value, int address, int range, int offset) {
+    public FloatRegister(String label, boolean isOutput, int address, int range, int offset) {
         super(address);
-        this.fdp = fdp;
-        this.value = value;
+        this.fdp = new FloatDataPoint(label,isOutput);
         this.range = range;
         this.offset = offset;
+        registerMap.put(fdp,this);
     }
 
     @Override
     public void read() {
-        float newValue = ModbusAccessor.getInstance().readFloat(getAddress()) * range + offset;
+        float newValue = Objects.requireNonNull(ModbusAccessor.getInstance()).readFloat(getAddress()) * range + offset;
         fdp.setValue(newValue);
 
     }
 
     @Override
     public void write() {
-        ModbusAccessor.getInstance().writeFloat(getAddress(), fdp.getValue());
+        if (fdp.isOutput()){
+            Objects.requireNonNull(ModbusAccessor.getInstance()).writeFloat(getAddress(), (fdp.getValue() - offset)/range); //Avoir valeur entre 0 et 1
+        };
     }
 }
 

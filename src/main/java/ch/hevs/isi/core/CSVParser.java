@@ -1,26 +1,27 @@
 package ch.hevs.isi.core;
 
-
+import ch.hevs.isi.field.BooleanRegister;
+import ch.hevs.isi.field.FloatRegister;
 import ch.hevs.isi.utils.Utility;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CSVParser {
+    /**Public Class from, read the CVS file*/
 
-    public static void main(String[] args) {
+    public static void creatDatapoint(){
+
+
         BufferedReader csv = Utility.fileParser("csv", "ModbusMap.csv");
-        List<DataPoint> datapoints = new ArrayList<>();
         String line = null;
 
         try {
             line = csv.readLine();
-            while (line != null) {
+            line = csv.readLine();//First Line useless for create Datapoint
 
+            while (line != null) {
                 String[] val = line.split(";");
                 line = csv.readLine();
-
                 String label = val[0];
                 String type = val[1];
                 boolean input = val[2].equalsIgnoreCase("Y");
@@ -29,14 +30,13 @@ public class CSVParser {
                 int range = Integer.parseInt(val[5]);
                 int offset = Integer.parseInt(val[6]);
 
-
                 if (type.equalsIgnoreCase("F")) {
-                    DataPoint fr = new FloatDataPoint(label, address, range, offset);//Prendre FloatRegister eBooleanRegister
-                    datapoints.add(fdp);
+                    new FloatRegister(label,output, address, range, offset);//Prendre FloatRegister et BooleanRegister (voir fichier Prendre code Field)
+
                 } else if (type.equalsIgnoreCase("B")) {
-                    BooleanDataPoint bdp = new BooleanDataPoint(label, address, range, offset);
-                    datapoints.add(bdp);
+                    new BooleanRegister(label, output, address);
                 }
+
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());

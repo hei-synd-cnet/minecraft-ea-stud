@@ -13,6 +13,7 @@ public class ModbusAccessor {
     private ModbusMaster modbusMaster;
     private int slaveId;
 
+
     public static  ModbusAccessor getInstance(String ip, int port, int slaveId) {
         if (instance == null) {
             instance = new ModbusAccessor(ip, port, slaveId);
@@ -21,8 +22,8 @@ public class ModbusAccessor {
     }
     public static ModbusAccessor getInstance() {
         if (instance == null) {
-            System.out.println("ModbusAccessor not initialized yet");
-            return null;
+            System.err.println("You should use first ModbusAccessor.getInstance(String ip, int port, int slaveId)");
+            System.exit(-1);
         }
         return instance;
     }
@@ -90,8 +91,8 @@ public class ModbusAccessor {
         }
     }
 
-    public void disconnect() {
-        modbusMaster.destroy();
-    }
+//    public void disconnect() {
+//        modbusMaster.destroy();
+//    }
 
 }

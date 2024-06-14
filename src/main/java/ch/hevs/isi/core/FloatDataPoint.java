@@ -6,9 +6,9 @@ public class FloatDataPoint extends DataPoint{
     protected float value;
 
     /**Constructor*/
-    public FloatDataPoint(String label, float value) {
+    public FloatDataPoint(String label, boolean isOutput) {
         super(label);
-        this.value = value;
+        this.isOutput = isOutput;
     }
 
     /**Methods*/

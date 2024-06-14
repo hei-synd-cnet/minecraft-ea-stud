@@ -35,8 +35,8 @@ public abstract class DataPoint {
     }
 
     /**Defines whether the DataPoint is an output or not*/
-    public void isOutput(boolean isOutput) {
-        this.isOutput = isOutput;
+    public boolean isOutput() {
+        return isOutput;
     }
 
 }

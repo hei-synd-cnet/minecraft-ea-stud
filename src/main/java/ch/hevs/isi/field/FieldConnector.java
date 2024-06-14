@@ -28,15 +28,19 @@ public class FieldConnector implements DataPointListener {
 
     public void initialize(String host, int port) {
         // Initialize the connector
+        ModbusAccessor.getInstance(host, port, 1);
     }
 
     private void pushToField(DataPoint dp) {
         //System.out.println("Push to Field");
-        ModbusRegister.getRegisterFromDataPoint(dp);
+        if (dp.isOutput()) {
+            ModbusRegister mr = ModbusRegister.getRegisterFromDataPoint(dp);
+            mr.write();
+        }
     }
     @Override
     public void oneNewValue(DataPoint dp) {
-
+        pushToField(dp);
     }
 
 }
