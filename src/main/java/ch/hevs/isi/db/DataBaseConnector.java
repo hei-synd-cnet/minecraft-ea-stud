@@ -42,7 +42,7 @@ public class DataBaseConnector implements DataPointListener {
     }
     private void pushToDatabase (DataPoint dp){
 
-        System.out.println("Push to Data Base");
+        //System.out.println("Push to Data Base");
         String msg = "Minecraft " + dp.getLabel() + "=" + dp.toString();
         try {
             /**Construct a URL object*/
@@ -70,7 +70,7 @@ public class DataBaseConnector implements DataPointListener {
             int responseCode = connection.getResponseCode();
             if(responseCode == 204){
                 String response = connection.getResponseMessage();
-                System.out.println(response);
+                //System.out.println(response);
             }
             /**Close all communication related objects*/
             connection.disconnect();
