@@ -75,7 +75,7 @@ public class SmartControl extends TimerTask {
 
 
         /**General Information */
-        FloatDataPoint battery = (FloatDataPoint) DataPoint.getDataPointFromLabel("BATT_CHRG_FLOAT");
+        FloatDataPoint batteryLevel = (FloatDataPoint) DataPoint.getDataPointFromLabel("BATT_CHRG_FLOAT");
         FloatDataPoint grid = (FloatDataPoint) DataPoint.getDataPointFromLabel("GRID_U_FLOAT");
         FloatDataPoint batterPower = (FloatDataPoint) DataPoint.getDataPointFromLabel("BATT_P_FLOAT");
         FloatDataPoint solarPower = (FloatDataPoint) DataPoint.getDataPointFromLabel("SOLAR_P_FLOAT");
@@ -86,7 +86,7 @@ public class SmartControl extends TimerTask {
         FloatDataPoint bunkerPower = (FloatDataPoint) DataPoint.getDataPointFromLabel("BUNKER_P_FLOAT");
         FloatDataPoint windValue = (FloatDataPoint) DataPoint.getDataPointFromLabel("WIND_FLOAT");
         FloatDataPoint weatherValue = (FloatDataPoint) DataPoint.getDataPointFromLabel("WEATHER_FLOAT");
-        FloatDataPoint weatherForecast = (FloatDataPoint) DataPoint.getDataPointFromLabel("WEATHER_FORECAST_FLOAT");
+        FloatDataPoint currentWeather = (FloatDataPoint) DataPoint.getDataPointFromLabel("WEATHER_FORECAST_FLOAT");
         FloatDataPoint weatherCountdown = (FloatDataPoint) DataPoint.getDataPointFromLabel("WEATHER_COUNTDOWN_FLOAT");
 
         FloatDataPoint factoryEnergy = (FloatDataPoint) DataPoint.getDataPointFromLabel("FACTORY_ENERGY");
@@ -99,6 +99,54 @@ public class SmartControl extends TimerTask {
 
         /**Battery Management*/
 
+        if (batteryLevel.getValue() < 0.1f) {
+            // Batterie vide
+            solarSwitch.setValue(true); // Activer panneau solaire si jour
+            windSwitch.setValue(true); // Activer éolienne
+            factorySetPoint.setValue(0.0f); // Eteindre usine
+            coalSetPoint.setValue(1.0f); // Utiliser plus de charbon
+        } else if (batteryLevel.getValue() > 0.9f) {
+            // Batterie pleine
+            solarSwitch.setValue(false); // Désactiver panneau solaire
+            windSwitch.setValue(false); // Désactiver éolienne
+            factorySetPoint.setValue(1.0f); // Pleine production de l'usine
+            coalSetPoint.setValue(0.0f); // Économiser le charbon
+        } else {
+            // Batterie à un niveau intermédiaire
+            switch ((int) currentWeather.getValue()) {
+                case 0: // Clair
+                    solarSwitch.setValue(true); // Activer panneau solaire si jour
+                    windSwitch.setValue(true); // Activer éolienne
+                    break;
+                case 1: // Pluie
+                    solarSwitch.setValue(false); // Désactiver panneau solaire
+                    windSwitch.setValue(true); // Activer éolienne
+                    break;
+                case 2: // Orage
+                    solarSwitch.setValue(false); // Désactiver panneau solaire
+                    windSwitch.setValue(false); // Désactiver éolienne
+                    break;
+            }
+            // Maximiser la production de l'usine tant que la batterie reste stable
+            factorySetPoint.setValue(1.0f); // Pleine production de l'usine
+            coalSetPoint.setValue(0.5f); // Utiliser une quantité modérée de charbon
+        }
+
+        // Vérification supplémentaire pour éviter l'effondrement du réseau
+        if (coalAmount.getValue() < 0.1 * 300000) {
+            coalSetPoint.setValue(0.0f); // Arrêter d'utiliser du charbon
+        }
+
+        // Ajuster la production de l'usine en fonction du niveau de la batterie pour maximiser l'efficacité
+        if (batteryLevel.getValue() > 0.5f && batteryLevel.getValue() <= 0.9f) {
+            factorySetPoint.setValue(1.0f); // Pleine production de l'usine
+        } else if (batteryLevel.getValue() > 0.2f && batteryLevel.getValue() <= 0.5f) {
+            factorySetPoint.setValue(0.7f); // Production moyenne de l'usine
+        } else if (batteryLevel.getValue() > 0.1f && batteryLevel.getValue() <= 0.2f) {
+            factorySetPoint.setValue(0.4f); // Production réduite de l'usine
+        } else if (batteryLevel.getValue() <= 0.1f) {
+            factorySetPoint.setValue(0.0f); // Eteindre l'usine pour préserver la batterie
+        }
 
     }
 }
