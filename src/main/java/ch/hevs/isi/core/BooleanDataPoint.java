@@ -17,9 +17,12 @@ public class BooleanDataPoint extends DataPoint {
         // Notify all connectors
         update(true);
     }
+
     public boolean getValue() {
         return value;
+
     }
+
     public String toString() {
         if(value){
             return "1";

@@ -41,6 +41,7 @@ public class DataBaseConnector implements DataPointListener {
 
     }
     private void pushToDatabase (DataPoint dp){
+
         System.out.println("Push to Data Base");
         String msg = "Minecraft " + dp.getLabel() + "=" + dp.toString();
         try {
@@ -49,6 +50,7 @@ public class DataBaseConnector implements DataPointListener {
 
             /**Invoke the URL object’s openConnection() method to retrieve an HttpURLConnection object*/
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
 
             /**Configure the HttpURLConnection:*/
             connection.setRequestProperty("Authorization", "Token " + dbToken);
