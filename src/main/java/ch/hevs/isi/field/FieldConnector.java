@@ -3,8 +3,8 @@ package ch.hevs.isi.field;
 import ch.hevs.isi.core.DataPoint;
 import ch.hevs.isi.core.DataPointListener;
 
-public class FieldConnector implements DataPointListener {
 
+public class FieldConnector implements DataPointListener {
     /**
      * Attributes
      */
@@ -31,16 +31,13 @@ public class FieldConnector implements DataPointListener {
     }
 
     private void pushToField(DataPoint dp) {
-        System.out.println("Push to Field");
-
-            }
-
-
+        //System.out.println("Push to Field");
+        ModbusRegister.getRegisterFromDataPoint(dp);
+    }
     @Override
     public void oneNewValue(DataPoint dp) {
 
     }
-
 
 }
 

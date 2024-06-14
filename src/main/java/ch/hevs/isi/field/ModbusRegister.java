@@ -9,10 +9,11 @@ public abstract class ModbusRegister {
 
     private int address;
 
-    protected static Map<DataPoint, ModbusRegister> registerMap = new HashMap<DataPoint, ModbusRegister>();
+    public static Map<DataPoint, ModbusRegister> registerMap = new HashMap<DataPoint, ModbusRegister>();
 
     public ModbusRegister(int address) {
         this.address = address;
+
     }
 
     public static ModbusRegister getRegisterFromDataPoint(DataPoint dp) {
@@ -28,8 +29,13 @@ public abstract class ModbusRegister {
             register.read();
         }
     }
-    public abstract void   read() ;
+    public static void printRegisterMap() {
+        for (Map.Entry<DataPoint, ModbusRegister> entry : registerMap.entrySet()) {
+            System.out.println("DataPoint: " + entry.getKey() + ", Register Address: " + entry.getValue().getAddress());
+        }}
 
-    public abstract void write() ;
+    public abstract void read();
+
+    public abstract void write();
 
 }

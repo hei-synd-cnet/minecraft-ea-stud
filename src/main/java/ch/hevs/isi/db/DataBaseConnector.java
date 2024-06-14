@@ -23,7 +23,7 @@ public class DataBaseConnector implements DataPointListener {
     public void initialize(String url){
     }
     private void pushToDatabase (DataPoint dp){
-        System.out.println("Push to Data Base");
+        //System.out.println("Push to Data Base");
     }
 
     @Override
