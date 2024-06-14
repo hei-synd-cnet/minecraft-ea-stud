@@ -24,6 +24,11 @@ public class BooleanDataPoint extends DataPoint {
     }
 
     public String toString() {
-        return label + ", value: " + value;
+        if(value){
+            return "1";
+        }else{
+            return "0";
+        }
+
     }
 }
