@@ -12,14 +12,12 @@ import java.net.URL;
 
 public class DataBaseConnector implements DataPointListener {
 
-
     /**Private instance as attribute*/
     protected static DataBaseConnector db_c = null;
     private String dbProtocol;
     private String dbHostName;
     private String dbBucket;
     private String dbToken;
-
 
     /**Private Constructor*/
    private  DataBaseConnector() {};
@@ -50,7 +48,6 @@ public class DataBaseConnector implements DataPointListener {
 
             /**Invoke the URL object’s openConnection() method to retrieve an HttpURLConnection object*/
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
 
             /**Configure the HttpURLConnection:*/
             connection.setRequestProperty("Authorization", "Token " + dbToken);

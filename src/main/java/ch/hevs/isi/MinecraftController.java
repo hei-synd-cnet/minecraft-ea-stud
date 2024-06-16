@@ -80,11 +80,11 @@ public class MinecraftController {
 
         // ------------------------------------ /DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
 
-        // Database Connector
+        /**Database Connector*/
         DataBaseConnector dbConnector = DataBaseConnector.getInstance();
         dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
 
-        // Field Connector
+        /**Field Connector*/
         FieldConnector fieldConnector = FieldConnector.getInstance();
         fieldConnector.initialize(modbusTcpHost, modbusTcpPort);
         CSVParser.creatDatapoint();
@@ -93,11 +93,7 @@ public class MinecraftController {
         Timer pollTimer = new Timer();
         pollTimer.scheduleAtFixedRate(new PollTask(), 500, 2000);
 
-        // Start here my smart controller
+        /**Start my SmartControl*/
         pollTimer.scheduleAtFixedRate(new SmartControl(), 5000, 2000);
-
-
-//        new FloatDataPoint("GRID_U_FLOAT",true).setValue(800.5f);
-//        new FloatDataPoint("SOLAR_PANEL", true).setValue(0.5f);
     }
 }

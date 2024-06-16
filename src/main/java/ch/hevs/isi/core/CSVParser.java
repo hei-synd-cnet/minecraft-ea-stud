@@ -36,7 +36,6 @@ public class CSVParser {
                 } else if (type.equalsIgnoreCase("B")) {
                     new BooleanRegister(label, output, address);
                 }
-
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());

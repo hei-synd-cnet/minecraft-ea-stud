@@ -20,7 +20,6 @@ public class BooleanDataPoint extends DataPoint {
 
     public boolean getValue() {
         return value;
-
     }
 
     public String toString() {
@@ -29,6 +28,5 @@ public class BooleanDataPoint extends DataPoint {
         }else{
             return "0";
         }
-
     }
 }

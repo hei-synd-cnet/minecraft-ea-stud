@@ -38,5 +38,4 @@ public abstract class DataPoint {
     public boolean isOutput() {
         return isOutput;
     }
-
 }
