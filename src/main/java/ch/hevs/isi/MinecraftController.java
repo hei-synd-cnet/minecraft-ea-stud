@@ -1,6 +1,15 @@
 package ch.hevs.isi;
 
+import ch.hevs.isi.core.CSVParser;
+import ch.hevs.isi.core.FloatDataPoint;
+import ch.hevs.isi.db.DataBaseConnector;
+import ch.hevs.isi.field.FieldConnector;
+import ch.hevs.isi.field.ModbusAccessor;
+import ch.hevs.isi.field.PollTask;
+import ch.hevs.isi.smartControl.SmartControl;
 import ch.hevs.isi.utils.Utility;
+
+import java.util.Timer;
 
 public class MinecraftController {
 
@@ -31,10 +40,9 @@ public class MinecraftController {
         // ------------------------------------- DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
         String dbProtocol       = "http";
         String dbHostName       = "localhost";
-        String dbName           = "labo";
-        String dbUserName       = "root";
+        String dbBucket         = "labo";
+        String dbToken          = "root";
         String dbPassword       = "root";
-
         String modbusTcpHost    = "localhost";
         int modbusTcpPort       = 1502;
 
@@ -53,9 +61,9 @@ public class MinecraftController {
 
             dbProtocol    = dbParams[0];
             dbHostName    = dbParams[1];
-            dbName        = parameters[1];
-            dbUserName    = parameters[2];
-            dbPassword    = Utility.md5sum(dbUserName);
+            dbBucket        = parameters[1];
+            dbToken    = parameters[2];
+            dbPassword    = Utility.md5sum(dbToken);
 
             // Decode parameters for Modbus TCP
             modbusTcpHost = parameters[3];
@@ -72,7 +80,23 @@ public class MinecraftController {
 
         // ------------------------------------ /DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
 
-        // Start coding here ...
+        /**Database Connector*/
+        DataBaseConnector dbConnector = DataBaseConnector.getInstance();
+        dbConnector.initialize(dbProtocol,dbHostName,dbBucket,dbToken);
 
+        /**Field Connector*/
+        FieldConnector fieldConnector = FieldConnector.getInstance();
+        fieldConnector.initialize(modbusTcpHost, modbusTcpPort);
+        /**
+         * Creation of ModbusRegister with CVSpasser
+         */
+        CSVParser.creatDatapoint();
+
+        /**Pooling management*/
+        Timer pollTimer = new Timer();
+        pollTimer.scheduleAtFixedRate(new PollTask(), 500, 2000);
+
+        /**Start my SmartControl*/
+        pollTimer.scheduleAtFixedRate(new SmartControl(), 5000, 2000);
     }
 }
