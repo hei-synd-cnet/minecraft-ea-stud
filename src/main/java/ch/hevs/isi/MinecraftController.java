@@ -87,6 +87,9 @@ public class MinecraftController {
         /**Field Connector*/
         FieldConnector fieldConnector = FieldConnector.getInstance();
         fieldConnector.initialize(modbusTcpHost, modbusTcpPort);
+        /**
+         * Creation of ModbusRegister with CVSpasser
+         */
         CSVParser.creatDatapoint();
 
         /**Pooling management*/

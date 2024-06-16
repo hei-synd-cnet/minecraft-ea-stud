@@ -6,18 +6,23 @@ import ch.hevs.isi.utils.Utility;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * This class is responsible for parsing a CSV file and creating data points
+ * based on the information read from the file.
+ */
 public class CSVParser {
-    /**Public Class from, read the CVS file*/
 
-    public static void creatDatapoint(){
-
+    /**
+     * Reads a CSV file and creates data points based on the file's content.
+     */
+    public static void creatDatapoint() {
 
         BufferedReader csv = Utility.fileParser("csv", "ModbusMap.csv");
         String line = null;
 
         try {
             line = csv.readLine();
-            line = csv.readLine();//First Line useless for create Datapoint
+            line = csv.readLine(); // Skip the first line as it is not needed for creating data points
 
             while (line != null) {
                 String[] val = line.split(";");
@@ -31,9 +36,14 @@ public class CSVParser {
                 int offset = Integer.parseInt(val[6]);
 
                 if (type.equalsIgnoreCase("F")) {
-                    new FloatRegister(label,output, address, range, offset);//Prendre FloatRegister et BooleanRegister (voir fichier Prendre code Field)
-
+                    /**
+                     * Create the FloatRegister
+                     */
+                    new FloatRegister(label, output, address, range, offset);
                 } else if (type.equalsIgnoreCase("B")) {
+                    /**
+                     * Create the BooleanDataPoint
+                     */
                     new BooleanRegister(label, output, address);
                 }
             }
