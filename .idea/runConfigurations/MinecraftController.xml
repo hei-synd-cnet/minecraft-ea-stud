@@ -2,6 +2,7 @@
   <configuration default="false" name="MinecraftController" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="ch.hevs.isi.MinecraftController" />
     <module name="HEI" />
+    <option name="PROGRAM_PARAMETERS" value="influxdb_hostname db_organisation db_bucket db_measurement db_token modbusTCP_hostname modbusTCP_port" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.hevs.isi.*" />
