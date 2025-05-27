@@ -16,7 +16,9 @@ import java.util.*;
  * @author Christopher Métrailler
  * @author Michael Clausen
  * @author Cedric Crettaz
+ * @author Patrice Rudaz
  */
+@SuppressWarnings("unused")
 public class Utility {
     /** Default size for the TCP input stream. */
     public static final int	TCP_BUFFER_SIZE = 4096;
@@ -349,7 +351,8 @@ public class Utility {
     }
 
     /**
-     * Method to use to access a file in your resources folder...
+     * Method to use to access a file in your `resources` folder.
+     *
      * @param pathName  folder's name (if exists) from `resources`
      * @param fileName  Name of the file to access
      *
@@ -363,7 +366,7 @@ public class Utility {
         } else {
             is = ClassLoader.getSystemClassLoader().getResourceAsStream(pathName + "/" + fileName);
         }
-        
+
         if (is != null) {
             return new BufferedReader(new InputStreamReader(is));
         }

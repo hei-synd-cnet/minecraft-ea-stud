@@ -12,15 +12,17 @@ public class MinecraftController {
         System.out.println();
         System.out.println("In development mode, just add to your running configuration the needed parameters (see usage below).");
         System.out.println("In running mode, the application's usage is the following:");
-        System.out.println("java MinecraftController <InfluxDB Server> <DB Name> <DB Measurement> <DB Username> <ModbusTCP Server> <ModbusTCP port> [-modbus4j] [-keepAlive]");
+        System.out.println("java MinecraftController <InfluxDB Hostname> <DB Organisation> <DB Bucket> <DB Measurement> <DB token> <ModbusTCP Hostname> <ModbusTCP port> [-eraseDB]");
         System.out.println("where:");
-        System.out.println("- <InfluxDB Server>:  The complete URL of the InfluxDB server, including the protocol (http or https)...");
-        System.out.println("                      Example: https://influx.sdi.hevs.ch");
-        System.out.println("- <DB Name>:          The name of the Influx DB to use. For this project, this name is the name of the group you've been affected to. (SInXX)");
-        System.out.println("- <DB Username:       The user's name to use to access the DB. It's also your group's name. (SInXX)");
-        System.out.println("- <ModbusTCP Server>: The IP address of the Minecraft ModbusTCP server (default value: localhost)");
-        System.out.println("- <ModbusTCP port>:   The port number of the Minecraft ModbusTCP server (default value: 1502)");
-        System.out.println("- [-eraseDB]:         Optional parameter! If set, the application will erase the previous data in InfluxDB...");
+        System.out.println("- <InfluxDB Hostname>:  The complete URL of the InfluxDB server, including the protocol (http or https)...");
+        System.out.println("                        Example: https://influx.sdi.hevs.ch");
+        System.out.println("- <DB Organisation>:    The name of the organisation to use with InfluxDB v 2.X.X. For this project, this name is the group's name you've been affected to. (cnetXX)");
+        System.out.println("- <DB Bucket>:          The name of the bucket to use with InfluxDB v 2.X.X. For this project, this name is `cnet` for all groups");
+        System.out.println("- <DB Measurement>:     The name of the measurement to be used to store data in InfluxDB.  (default value: minecraft)");
+        System.out.println("- <DB Token>:           The user's token giving access the DB. You can find it on https://influx.sdi.hevs.ch and looking for `API Token` ...");
+        System.out.println("- <ModbusTCP Hostname>: The IP address of the Minecraft ModbusTCP server (default value: localhost)");
+        System.out.println("- <ModbusTCP port>:     The port number of the Minecraft ModbusTCP server (default value: 1502)");
+        System.out.println("- [-eraseDB]:           Optional parameter! If set, the application will erase the previous data in InfluxDB...");
         System.out.println();
         System.exit(1);
     }
@@ -31,18 +33,19 @@ public class MinecraftController {
         // ------------------------------------- DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
         String dbProtocol       = "http";
         String dbHostName       = "localhost";
-        String dbName           = "labo";
-        String dbUserName       = "root";
-        String dbPassword       = "root";
+        String dbOrganisation   = "cnetXX";
+        String dbBucket         = "cnet";
+        String dbMeasurement    = "minecraft";
+        String dbToken          = "_your_token_";
 
         String modbusTcpHost    = "localhost";
         int modbusTcpPort       = 1502;
 
         // Check the number of arguments and show usage message if the number does not match.
-        String[] parameters = null;
+        String[] parameters;
 
         // If there is only one number given as parameter, construct the parameters according the group number.
-        if (args.length >= 5) {
+        if (args.length > 6) {
             parameters = args;
 
             // Decode parameters for influxDB
@@ -51,25 +54,26 @@ public class MinecraftController {
                 usage();
             }
 
-            dbProtocol    = dbParams[0];
-            dbHostName    = dbParams[1];
-            dbName        = parameters[1];
-            dbUserName    = parameters[2];
-            dbPassword    = Utility.md5sum(dbUserName);
+            dbProtocol      = dbParams[0];
+            dbHostName      = dbParams[1];
+            dbOrganisation  = parameters[1];
+            dbBucket        = parameters[2];
+            dbMeasurement   = parameters[3];
+            dbToken         = parameters[4];
 
             // Decode parameters for Modbus TCP
-            modbusTcpHost = parameters[3];
-            modbusTcpPort = Integer.parseInt(parameters[4]);
+            modbusTcpHost = parameters[5];
+            modbusTcpPort = Integer.parseInt(parameters[6]);
 
-            for (int i = 5; i < args.length; i++) {
+            for (int i = 7; i < args.length; i++) {
                 if (parameters[i].compareToIgnoreCase("-erasedb") == 0) {
                     ERASE_PREVIOUS_DATA_INB_DB = true;
+                    continue;
                 }
             }
         } else {
             usage();
         }
-
         // ------------------------------------ /DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
 
         // TODO: write your main code here. Have fun !
