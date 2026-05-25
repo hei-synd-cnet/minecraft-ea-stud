@@ -12,14 +12,14 @@ public class MinecraftController {
         System.out.println();
         System.out.println("In development mode, just add to your running configuration the needed parameters (see usage below).");
         System.out.println("In running mode, the application's usage is the following:");
-        System.out.println("java MinecraftController <InfluxDB Hostname> <DB Organisation> <DB Bucket> <DB Measurement> <DB token> <ModbusTCP Hostname> <ModbusTCP port> [-eraseDB]");
+        System.out.println("java MinecraftController <InfluxDB Hostname> <DB Organisation> <DB Bucket> <DB Measurement> <DB Token> <ModbusTCP Hostname> <ModbusTCP port> [-eraseDB]");
         System.out.println("where:");
         System.out.println("- <InfluxDB Hostname>:  The complete URL of the InfluxDB server, including the protocol (http or https)...");
-        System.out.println("                        Example: https://influx.sdi.hevs.ch");
+        System.out.println("                        Example: https://influx.cnet.synd.hevs.ch");
         System.out.println("- <DB Organisation>:    The name of the organisation to use with InfluxDB v 2.X.X. For this project, this name is the group's name you've been affected to. (cnetXX)");
-        System.out.println("- <DB Bucket>:          The name of the bucket to use with InfluxDB v 2.X.X. For this project, this name is `cnet` for all groups");
+        System.out.println("- <DB Bucket>:          The name of the bucket to use with InfluxDB v 2.X.X.");
         System.out.println("- <DB Measurement>:     The name of the measurement to be used to store data in InfluxDB.  (default value: minecraft)");
-        System.out.println("- <DB Token>:           The user's token giving access the DB. You can find it on https://influx.sdi.hevs.ch and looking for `API Token` ...");
+        System.out.println("- <DB Token>:           The user's token giving access the DB. You can find it on https://influx.cnet.synd.hevs.ch and looking for `API Token` ...");
         System.out.println("- <ModbusTCP Hostname>: The IP address of the Minecraft ModbusTCP server (default value: localhost)");
         System.out.println("- <ModbusTCP port>:     The port number of the Minecraft ModbusTCP server (default value: 1502)");
         System.out.println("- [-eraseDB]:           Optional parameter! If set, the application will erase the previous data in InfluxDB...");
