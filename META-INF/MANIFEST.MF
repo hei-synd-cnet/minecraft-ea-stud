@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: ch.hevs.isi.MinecraftController
+Comment: TODO: update main class is needed
+

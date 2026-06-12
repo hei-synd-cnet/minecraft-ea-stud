@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="MinecraftController">
-    <output-path>$PROJECT_DIR$/out/artifacts/MinecraftController</output-path>
-    <root id="archive" name="MinecraftController.jar" />
-  </artifact>
-</component>

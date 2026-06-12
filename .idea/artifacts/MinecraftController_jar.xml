@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MinecraftController:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
+    <root id="archive" name="MinecraftController.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="HEI" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/java-websocket/Java-WebSocket/1.5.2/Java-WebSocket-1.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/infiniteautomation/modbus4j/3.0.4/modbus4j-3.0.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
