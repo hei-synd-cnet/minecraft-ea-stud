@@ -22,17 +22,20 @@ public class MinecraftController {
         System.out.println("- <DB Token>:           The user's token giving access the DB. You can find it on https://influx.cnet.synd.hevs.ch and looking for `API Token` ...");
         System.out.println("- <ModbusTCP Hostname>: The IP address of the Minecraft ModbusTCP server (default value: localhost)");
         System.out.println("- <ModbusTCP port>:     The port number of the Minecraft ModbusTCP server (default value: 1502)");
-        System.out.println("- [-eraseDB]:           Optional parameter! If set, the application will erase the previous data in InfluxDB...");
+        System.out.println("- [-eraseDB]:           Optional parameter! If set, the application should erase the previous data in InfluxDB (if you've implemented the feature)...");
         System.out.println();
-        System.exit(1);
+        System.out.println("Be aware that for now on, the default values are used !");
+        System.out.println("Edit your configuration to set up your parameters !");
+        System.out.println();
+        System.out.println();
     }
 
     @SuppressWarnings("all")
     public static void main(String[] args) {
 
         // ------------------------------------- DO NOT CHANGE THE FOLLOWING LINES -------------------------------------
-        String dbProtocol       = "http";
-        String dbHostName       = "localhost";
+        String dbProtocol       = "https";
+        String dbHostName       = "influx.cnet.synd.hevs.ch";
         String dbOrganisation   = "cnetXX";
         String dbBucket         = "cnet";
         String dbMeasurement    = "minecraft";
